@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+body {
+    background-color:  #fff;
+    margin: 0;
+}
+
+
+section.contact-form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    color: #fff;
+    padding-bottom: 2em;
+}
+
+.sectionHeader{
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #d10024;
+    margin: 0 auto 8px auto;
+    font-size: 30px;
+    text-align: center;
+}
+
+.alert {
+    width: 99%;
+    padding: 13px;
+    box-sizing: border-box;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.alert-fade {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.alert-3-danger {
+    border: 1px solid #91f657;
+    border-radius: 8px;
+    background-color: rgba(56, 255, 56, 0.05);
+}
+.alert-3-danger .alert-title {
+    color: #54ba1a;
+}
+
+.alert-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+}
+  
+.alert-content {
+    margin: 0;
+    font-size: 13px;
+    font-family: "Open Sans", sans-serif;
+    color: #555555;
+    text-align: left;
+}
+
+.sub-heading{
+    margin-bottom: .5em;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.heading{
+    font-size: 2.5em;
+}
+
+.sub-heading{
+    text-align: left;
+    color: #000000;
+}
+
+.contactForm{
+    display: grid;
+    gap: 3em;
+}
+
+form{
+    width: 100%;
+    margin-top: 5px;
+}
+
+.para{
+    color: #000000;
+    font-size: 1.1rem;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.para2{
+    text-align: left;
+}
+
+.input{
+    width: 95%;
+    max-width: 700px;
+    border: none;
+    font-size: .9rem;
+    padding: 1em;
+    outline: none;
+    color: #000000;
+    border-radius: 10px;
+    border: 1px solid rgb(53, 53, 53);
+    margin-top: 12px;
+    resize: none;
+
+}
+
+.input:focus{
+    border: 1px solid #d10024;
+}
+
+.input::placeholder{
+    text-transform: capitalize;
+}
+
+.submit{
+    background-color: #d10024;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+span.error {
+    color: red;
+    text-align: left;
+    margin-right: auto;
+    float: left;
+    font-size: 13px;
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+.map-container{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 60px;
+}
+
+.mapBg{
+    position: absolute;
+    background-color: #d10024;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 90%;
+    border-radius: 20px;
+}
+
+.map{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+}
+
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+
+.contactMethod{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    text-align: left;
+}
+
+.method{
+    display: flex;
+    align-items: center;
+}
+
+.contactIcon{
+    font-size: 2rem;
+    color: #d10024;
+    width: 70px;
+}
+
+section.info {
+    margin: 0;
+    height: fit-content;
+    width: 100%;
+    min-width: 100%;
+    background-color: #1e1f29;
+    color: #fff;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    border-top: solid 2px #f5f8fb98;
+}
+
+.info h1 {
+    margin: 0 auto 40px auto;
+    font-size: 30px;
+    text-align: center;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.details > div {
+    width: 30%;   
+}
+
+.details > div > h5 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.details > div > p {
+    text-align: center;
+    font-size: 13.5px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    background-color: #d10024;
+    border-radius: 50%;
+    display: flex;
+    padding: 10px;
+}
+
+.icon img {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+
+@media screen and (min-width:800px) {
+    section{
+        max-width: 1100px;
+    }
+    .contactForm{
+        grid-template-columns: 1fr 1fr;
+    }   
+
+    .contactMethod{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .details {
+        display: block;
+        margin: auto;
+        width: fit-content;
+    }
+    .details > div {
+        width: 90%;   
+        margin: auto;
+    }
+}
