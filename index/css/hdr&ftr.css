@@ -38,6 +38,10 @@ body {
   padding: 0;
 }
 
+ul.header-links1 {
+  cursor: default;
+}
+
 ul.header-links {
   max-width: 70%;
 }
@@ -502,6 +506,7 @@ footer li a {
 
 .about-us .footer-links {
   padding-left: 0;
+  cursor: default;
 }
 
 .top-footer .about-us, .top-footer .footer-categories, .top-footer .footer-nav {

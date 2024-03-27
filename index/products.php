@@ -12,9 +12,9 @@
     <header>
         <div id="top-header">
             <ul class="header-links header-links1">
-                <li><a href="#"><img src="icons/phone-solid.svg" class="icons-top-header">&nbsp; +212 581054154</a></li>
-                <li><a href="#"><img src="icons/envelope-regular.svg" class="icons-top-header mail-icon">&nbsp; thetechspacecontact@gmail.com</a></li>
-                <li><a href="#"><img src="icons/location-dot-solid.svg" class="icons-top-header location-icon">&nbsp; Road El Jadida Casablanca</a></li>
+                <li><a><img src="icons/phone-solid.svg" class="icons-top-header">&nbsp; +212 581054154</a></li>
+                <li><a><img src="icons/envelope-regular.svg" class="icons-top-header mail-icon">&nbsp; thetechspacecontact@gmail.com</a></li>
+                <li><a><img src="icons/location-dot-solid.svg" class="icons-top-header location-icon">&nbsp; Road El Jadida Casablanca</a></li>
             </ul>
             <ul class="header-links header-links2">
             <li class="acc"><a href="login.php"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;Log In</a></li>
@@ -34,7 +34,7 @@
             <nav>
                 <ul>
                 <span class="to-hide">
-                    <li><a class="active" href="index.php">HOME</a></li>
+                    <li><a href="index.php">HOME</a></li>
                     <li class="dropdown">
                         <a class="a-categories" href="#">CATEGORIES</a>
                         <ul>
@@ -44,7 +44,7 @@
                             <li><a href="#">Accessories</a></li>
                         </ul>
                     </li>
-                    <li><a href="products.php">PRODUCTS</a></li>
+                    <li><a class="active" href="products.php">PRODUCTS</a></li>
                     <li><a href="contact.php">CONTACT</a></li>
                     </span>
                     <span class="to-keep">
@@ -106,7 +106,6 @@
                     <li><h5><a class="active" href="products.php">PRODUCTS</a></h5></li>
                     <li><h5><a href="contact.php">CONTACT</a></h5></li>
                     <li class="copyright">© 2024 TheTechSpace. All Rights Reserved.</li>
-                    <li class="copyright">© 2024 TheTechSpace. All Rights Reserved.</li>
                 </ul>
             </div>
             <div class="footer-categories">
@@ -121,11 +120,11 @@
             <div class="about-us">
                 <h5>ABOUT US</h5>
                 <div class="about-us-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                    <p>Welcome to The TechSpace – Discover the latest in electronics, from smartphones to PCs. Shop with ease and enjoy fast nationwide delivery. Experience innovation at The TechSpace today!</p>
                     <ul class="footer-links">
-                        <li><a href="#"><img src="icons/phone-solid.svg" class="icons-top-header">&nbsp; +212 581054154</a></li>
-                        <li><a href="#"><img src="icons/envelope-regular.svg" class="icons-top-header mail-icon">&nbsp; thetechspacecontact@gmail.com</a></li>
-                        <li><a href="#"><img src="icons/location-dot-solid.svg" class="icons-top-header location-icon">&nbsp; Road El Jadida Casablanca</a></li>
+                        <li><a><img src="icons/phone-solid.svg" class="icons-top-header">&nbsp; +212 581054154</a></li>
+                        <li><a><img src="icons/envelope-regular.svg" class="icons-top-header mail-icon">&nbsp; thetechspacecontact@gmail.com</a></li>
+                        <li><a><img src="icons/location-dot-solid.svg" class="icons-top-header location-icon">&nbsp; Road El Jadida Casablanca</a></li>
                         <li class="copyright"></li>
                     </ul>
                 </div>
