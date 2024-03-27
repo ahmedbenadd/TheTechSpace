@@ -1,3 +1,5 @@
+// __________ GETTING USER DATA __________//
+
 function checkLogin(userData) {
     if (userData && userData.login) {
         return true;
@@ -17,9 +19,9 @@ function fetchAndStoreUserData() {
 
                 let userData = JSON.parse(localStorage.getItem('userData'));
                 if (checkLogin(userData)) {
-                    document.querySelector('.acc').innerHTML = `<a href="#"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;${userData['full_name']}</a>`;
+                    document.querySelector('.acc').innerHTML = `<a style="cursor: default;"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;${userData['full_name']}</a>`;
                     document.querySelector('.user-a').setAttribute('href', '#');
-                    document.querySelector('.down-li').innerHTML = '<li><a href="#" class="logout-button">LOG OUT</a></li>';      
+                    document.querySelector('.down-li').innerHTML = '<li><a class="logout-button">LOG OUT</a></li>';      
                     if (userData['is_admin'] == 1) {
                             document.querySelector('.down-li').innerHTML = '<li><a href="../admin/dashboard.php" target="_blank">ADMINISTRATION</a></li><li><a href="#" class="logout-button">LOG OUT</a></li>';
                             document.querySelector('.footer-admin').innerHTML = '<h5><a href="/TheTechSpace/admin/dashboard.php" target="_blank">ADMINISTRATION</a></h5>';
@@ -53,6 +55,7 @@ function fetchAndStoreUserData() {
 
 fetchAndStoreUserData();
 
+// __________ SCROLL TO UP BTN __________//
 
 let toUp = document.querySelector(".to-up");
 
@@ -67,21 +70,16 @@ toUp.onclick = function () {
     });
 }
 
+// __________ BURGER MENU __________//
+
 let burgerShow = document.querySelector(".burger-show");
+let burgerMenu = document.querySelector(".burger-menu");
+let burgerCat = document.querySelector(".catg-button");
 
 burgerShow.onclick = function () {
-    document.querySelector(".burger-menu").classList.add("burger-menu-showed");
-    document.querySelector('.dark-overlay').style.display = "block";
+    burgerMenu.classList.add("burger-menu-showed");
+    darkOverlay.style.display = "block";
 }
-
-let burgerHide = document.querySelector(".burger-header");
-
-burgerHide.onclick = function () {
-    document.querySelector('.dark-overlay').style.display = "none";
-    document.querySelector(".burger-menu").classList.remove("burger-menu-showed");
-}
-
-let burgerCat = document.querySelector(".catg-button");
 
 burgerCat.addEventListener("click" , function () {
     let catg = document.querySelector(".catg");
@@ -90,9 +88,45 @@ burgerCat.addEventListener("click" , function () {
     cheveron.classList.toggle("cheveron-rotated");
 }); 
 
+// __________ ACC MENU __________//
+
+let accShow = document.querySelector('.user-a');
+let accMenu = document.querySelector('.acc-menu');
+
+accShow.onclick = function () {
+    accMenu.classList.add('acc-menu-showed');
+    darkOverlay.style.display = "block";
+}
+
+// __________ CART MENU __________//
+
+let cartShow = document.querySelector('.cart-show');
+let cartMenu = document.querySelector('.cart-menu');
+
+cartShow.onclick = function () {
+    cartMenu.classList.add('cart-menu-showed');
+    darkOverlay.style.display = "block";
+}
+
+// __________ MENUS __________//
+
+let menuHeaders = document.querySelectorAll('.menu-header');
 let darkOverlay = document.querySelector('.dark-overlay');
 
+function hideMenus() {
+    darkOverlay.style.display = "none";
+    burgerMenu.classList.remove("burger-menu-showed");
+    accMenu.classList.remove("acc-menu-showed");
+    cartMenu.classList.remove('cart-menu-showed');
+}
+
+menuHeaders.forEach(menuHeader => {
+    menuHeader.addEventListener('click', hideMenus);
+});
+
 darkOverlay.addEventListener("click", function () {
-    document.querySelector('.dark-overlay').style.display = "none";
-    document.querySelector(".burger-menu").classList.remove("burger-menu-showed");
+    darkOverlay.style.display = "none";
+    burgerMenu.classList.remove("burger-menu-showed");
+    accMenu.classList.remove("acc-menu-showed");
+    cartMenu.classList.remove('cart-menu-showed');
 });

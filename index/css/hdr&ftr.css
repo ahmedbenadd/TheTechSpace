@@ -269,6 +269,43 @@ li.cart-li {
 
 /* __________ COMMON __________ */
 
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid #b9babc 1px;
+  height: fit-content;
+  padding: 0 20px;
+}
+
+.menu-header:hover {
+  cursor: pointer;
+}
+
+.menu-header span {
+  margin: auto 0;
+  transition: transform 0.3s ease;
+}
+
+.menu-header:hover span {
+  transform: rotate(90deg) scale(1.1,1.1);
+}
+
+.menu-header h1 {
+  color: #d10024;
+  font-size: 23px;
+  transition: transform 0.3s ease;
+}
+
+.menu-header:hover h1 {
+  transform: scale(1.02,1.02);
+}
+
+.menu-header:hover span {
+  transform: rotate(90deg) scale(1.1,1.1);
+}
+
+          /* TO UP */
+
 .to-up {
   position: fixed;
   bottom: 45px;
@@ -287,13 +324,13 @@ li.cart-li {
   right: 50px;
 }
 
-          /* MENU */
+          /*BURGER MENU */
 
 .burger-menu {
   position: fixed;
   top: 0;
   left: -150%;
-  width: 250px;
+  width: 300px;
   height: 100%;
   background: #ffffff;
   color: #fff;
@@ -305,41 +342,6 @@ li.cart-li {
 
 .burger-menu-showed {
   left: 0;
-}
-
-.burger-header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: solid #b9babc 1px;
-  height: fit-content;
-  padding: 0 20px;
-}
-
-.burger-header:hover {
-  cursor: pointer;
-}
-
-.burger-header span {
-  margin: auto 0;
-  transition: transform 0.3s ease;
-}
-
-.burger-header:hover span {
-  transform: rotate(90deg) scale(1.1,1.1);
-}
-
-.burger-header h1 {
-  color: #d10024;
-  font-size: 23px;
-  transition: transform 0.3s ease;
-}
-
-.burger-header:hover h1 {
-  transform: scale(1.02,1.02);
-}
-
-.burger-header:hover span {
-  transform: rotate(90deg) scale(1.1,1.1);
 }
 
 .burger-nav {
@@ -407,7 +409,6 @@ li.cart-li {
   margin-bottom: 10px;
 }
 
-
 .burger-nav ul.catg-showed {
   display: block;
 }
@@ -438,6 +439,46 @@ span.cheveron-rotated {
 }
 
           /* ACCOUNT */
+          
+.acc-menu {
+  position: fixed;
+  top: 0;
+  right: -150%;
+  width: 300px;
+  height: 100%;
+  background: #ffffff;
+  color: #fff;
+  transition: right 0.3s ease;
+  border-left: solid #d10024;
+  box-shadow: -25px 5px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.acc-menu-showed {
+  right: 0;
+}
+
+          /* CART */
+
+.cart-menu {
+  position: fixed;
+  top: 0;
+  right: -150%;
+  width: 300px;
+  height: 100%;
+  background: #ffffff;
+  color: #fff;
+  transition: right 0.3s ease;
+  border-left: solid #d10024;
+  box-shadow: -25px 5px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.cart-menu-showed {
+  right: 0;
+}
+          
+          /* DARK OVERLAY */
 
 .dark-overlay {
   position: fixed;
