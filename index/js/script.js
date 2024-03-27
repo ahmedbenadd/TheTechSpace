@@ -6,7 +6,6 @@ function checkLogin(userData) {
     }
 }
 
-// Function to fetch and store user data
 function fetchAndStoreUserData() {
     $.ajax({
         url: "php/user_data.php",
@@ -52,7 +51,6 @@ function fetchAndStoreUserData() {
     });
 }
 
-// Call the function to fetch and store user data
 fetchAndStoreUserData();
 
 
@@ -73,21 +71,28 @@ let burgerShow = document.querySelector(".burger-show");
 
 burgerShow.onclick = function () {
     document.querySelector(".burger-menu").classList.add("burger-menu-showed");
+    document.querySelector('.dark-overlay').style.display = "block";
 }
 
 let burgerHide = document.querySelector(".burger-header");
 
 burgerHide.onclick = function () {
+    document.querySelector('.dark-overlay').style.display = "none";
     document.querySelector(".burger-menu").classList.remove("burger-menu-showed");
 }
 
 let burgerCat = document.querySelector(".catg-button");
 
 burgerCat.addEventListener("click" , function () {
-    console.log('clicked');
     let catg = document.querySelector(".catg");
     let cheveron = document.querySelector("#cheveron");
     catg.classList.toggle("catg-showed");
     cheveron.classList.toggle("cheveron-rotated");
 }); 
 
+let darkOverlay = document.querySelector('.dark-overlay');
+
+darkOverlay.addEventListener("click", function () {
+    document.querySelector('.dark-overlay').style.display = "none";
+    document.querySelector(".burger-menu").classList.remove("burger-menu-showed");
+});

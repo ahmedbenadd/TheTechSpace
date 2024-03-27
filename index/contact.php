@@ -137,6 +137,12 @@
                     <span class="down-li logout-span"><li><a href="login.php">LOG IN</a></li></span>
             </ul>
         </div>
+        
+        <div class="acc-menu"></div>
+        
+        <div class="cart-menu"></div>
+
+        <div class="dark-overlay"></div>
     </main>
     <footer>
         <div class="top-footer">

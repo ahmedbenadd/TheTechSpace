@@ -25,6 +25,8 @@ body {
   transition: all 0.3s;
 }
 
+/* __________ HEADER __________ */
+
 #top-header {
   background-color: #1e1f29;
   display: flex;
@@ -261,13 +263,15 @@ li.cart-li {
   cursor: pointer;
 }
 
+/* __________ COMMON __________ */
+
 .to-up {
   position: fixed;
   bottom: 45px;
   right: -40px;
   cursor: pointer;
   transition: .3s;
-  z-index: 1000;
+  z-index: 800;
 }
 
 .to-up svg {
@@ -278,6 +282,8 @@ li.cart-li {
 .to-up-show {
   right: 50px;
 }
+
+          /* MENU */
 
 .burger-menu {
   position: fixed;
@@ -290,6 +296,7 @@ li.cart-li {
   transition: left 0.3s ease;
   border-right: solid #d10024;
   box-shadow: 25px 5px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
 }
 
 .burger-menu-showed {
@@ -426,6 +433,8 @@ span.cheveron-rotated {
   margin: 0 0 0 30px;
 }
 
+          /* ACCOUNT */
+
 .dark-overlay {
   position: fixed;
   top: 0;
@@ -434,8 +443,11 @@ span.cheveron-rotated {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: none;
+  cursor: pointer;
   z-index: 999;
 }
+
+/* __________ FOOTER __________ */
 
 footer {
   border-top: solid 3px #d10024;
