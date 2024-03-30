@@ -4,7 +4,6 @@
     $response = array();
     if (isset($_SESSION["id"])) {
         if($connStatus === "success") {
-
             $query = "SELECT * FROM users WHERE id = '" . $_SESSION["id"] . "'";
             $result = mysqli_query($conn, $query);
             $row = mysqli_fetch_assoc($result);

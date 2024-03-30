@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Home</title>
     <link rel="stylesheet" href="css/hdr&ftr.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="css/contact.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="icon" type="icon/png" href="logos/logo-nobg.png">
 </head>
 <body>
@@ -33,74 +33,157 @@
             <a href="index.php" class="logo"><img src="logos/logo1.jpg" alt="The TechSpace logo"></a>
             <nav>
                 <ul>
-                    <span class="to-hide">
-                        <li><a href="index.php">HOME</a></li>
-                        <li class="dropdown">
-                            <a class="a-categories" href="#">CATEGORIES</a>
-                            <ul>
-                                <li><a href="#">Laptops</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Components</a></li>
-                                <li><a href="#">Accessories</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="products.php">PRODUCTS</a></li>
-                        <li><a  class="active" href="contact.php">CONTACT</a></li>
+                <span class="to-hide">
+                    <li><a class="active" href="index.php">HOME</a></li>
+                    <li class="dropdown">
+                        <a class="a-categories" href="#">CATEGORIES</a>
+                        <ul>
+                            <li><a href="#">Laptops</a></li>
+                            <li><a href="#">Smartphones</a></li>
+                            <li><a href="#">Components</a></li>
+                            <li><a href="#">Accessories</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.php">PRODUCTS</a></li>
+                    <li><a href="contact.php">CONTACT</a></li>
                     </span>
                     <span class="to-keep">
-                        <li class="cart-li"><a class="cart-a cart-show" ><img class="cart-icon" src="icons/cart.svg" alt="Cart"></a></li>
-                        <li class="cart-li"><a class="cart-a user-a"><img class="user-icon" src="icons/user-solid-2.svg" alt="Account"></a></li>
+                        <li class="cart-li cart-show" ><a class="cart-a " ><img class="cart-icon" src="icons/cart.svg" alt="Cart"></a></li>
+                        <li class="cart-li user-a"><a class="cart-a "><img class="user-icon" src="icons/user-solid-2.svg" alt="Account"></a></li>
                     </span>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-        <section class="contact-form">
-            <h1 class="sectionHeader">Get In Touch!</h1>
-            <div class="contactForm">
-                <form action="" method="">
-                    <div class="alert alert-3-danger">
-                        <h3 class="alert-title" >Email Sent Successfully!</h3>
-                        <p class="alert-content">A confirmation email has been sent to: benaddouahmed2005@gmail.com</p>
+        <h2 class="BESTSELLER">BESTSELLER</h2>
+        <section class="wrapper">
+            <div class="product-img">
+              <img src="images/i9.jpg" height="280" width="290">
+            </div>
+            <div class="product-info">
+              <div class="product-text">
+                <h1>Intel Core i9 13th Gen</h1>
+                <p>
+                    Intel Core i9 13900KF (3.0 GHz / 5.8 GHz)<br>
+                    <strong>Brand </strong>&nbsp;Intel<br>
+                    <strong>CPU Model </strong>&nbsp;Core I9<br>
+                    <strong>CPU Frequency </strong>&nbsp;3.0 Ghz<br>
+                    <strong>CPU Turbo mode frequency </strong>&nbsp;5.8 GHz<br>
+                    <strong>Cores </strong>&nbsp;24<br>
+                    <strong>Threads </strong>&nbsp;32<br>
+                </p>
+              </div>
+              <div class="product-price-btn">
+                <p>566.60$</p>
+                <button type="button">add to cart</button>
+              </div>
+            </div>
+        </section>
+        <section class="products">
+            <h2 class="products-h2">LATEST PRODUCTS</h2>
+            <div class="row1">
+                <div class="product-card macbook">
+                    <h3>MacBook Pro M3 14"</h3>
+                    <div class="info-product">
+                        <div class="image">
+                            <img src="images/mcbkpro-m3.jpg" alt="MacBook Pro M3">
+                        </div>
+                        <p class="p-product">M3 Pro chip 12‑core CPU 8‑core GPU, 1TB SSD</p>
                     </div>
-                    <h1 class="sub-heading">Need Support !</h1>
-                    <input name="f_name" id="full_name" type="text" class="input" placeholder="full name" required>
-                    <span class="er-name error"></span>
-                    <input type="text" id="email" name="email" class="input" placeholder="your email" required>
-                    <span class="er-email error"></span>
-                    <input type="text" id="subject" name="subject" class="input" placeholder="your Subject" required>
-                    <span class="er-subject error"></span>
-                    <textarea class="input" id="message" name="message" cols="30" rows="8" placeholder="Your message..." required></textarea>
-                    <span class="er-message error"></span>
-                    <button type="button" id="send_email" class="input submit" name="submit">Send Message</button>
-                </form>
-                <div class="map-container">
-                    <div class="mapBg"></div>
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.4634760241215!2d-7.657725024198199!3d33.541332473353606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62cdf71a3ad5f%3A0xae343a1ea1f2b204!2sSuperior%20School%20of%20Technology!5e0!3m2!1sen!2sma!4v1710950199971!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    
+                    <div class="price">
+                        <span>$2,399.00</span>
+                        <button type="button" class="price-button">add to cart</button>
+                    </div>
+                </div>
+                <div class="product-card s24ultra">
+                    <h3>SAMSUNG Galaxy S24 Ultra</h3>
+                    <div class="info-product">
+                        <div class="image">
+                             <img src="images/galaxys24ultra.svg" alt="S24 Ultra">
+                         </div>
+                        <p>Snapdragon 8 Gen 3, 12GB, 256GB</p>
+                    </div>
+                    <div class="price">
+                        <span>$1,299.99</span>
+                        <button type="button" class="price-button">add to cart</button>
+                    </div>
+                </div>
+                <div class="product-card RTX3070">
+                    <h3>Gigabyte GeForce RTX 4070</h3>
+                    <div class="info-product">
+                        <div class="image">
+                            <img src="images/RTX3070.jpg" alt="RTX 4070">
+                        </div>
+                        <p>NVIDIA GeForce RTX 4070 12GB GDDR6X</p>
+                    </div>
+                    <div class="price">
+                        <span>$699</span>
+                        <button type="button" class="price-button">add to cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="product-card LogitechG502">
+                    <h3>Logitech G502 Hero RGB</h3>
+                    <div class="info-product">
+                        <div class="image">
+                            <img src="images/LogitechG502.jpg" alt="Logitech G502">
+                        </div>
+                        <p>Optical mouse, DPI 25600, RGB, 121g</p>
+                    </div>
+                    <div class="price">
+                        <span>$79.99</span>
+                        <button type="button" class="price-button">add to cart</button>
+                    </div>
+                </div>
+                <div class="product-card dell-xps">
+                    <h3>Dell XPS 15 - 9510</h3>
+                    <div class="info-product">
+                        <div class="image">
+                            <img src="images/dellxps.jpg" alt="Dell XPS 15">
+                        </div>
+                        <p>i7-11800H/16 GB/1TB SSD/RTX3050Ti /15.6" FHD+</p>
+                    </div>
+                    <div class="price">
+                        <span>$1,099</span>
+                        <button type="button" class="price-button">add to cart</button>
+                    </div>
+                </div>
+                <div class="product-card razer">
+                    <h3>Razer Blackshark V2 X</h3>
+                    <div class="info-product">
+                        <div class="image">
+                            <img src="images/razer.jpg" alt="Product 1">
+                        </div>
+                        <p>Black,Wired - 3.5 mm audio jack, 7.1 Virtual Surround</p>
+                    </div>
+                    <div class="price">
+                        <span>$49.99</span>
+                        <button type="button" class="price-button">add to cart</button>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="info">
-            <h1>Contact Us</h1>
+        <div class="view-all-button">
+            <a href="products.php">View All Products</a>
+        </div>
+        <h2 class="why-us-h">WHY SHOP WITH US</h2>
+        <section class="why-us">
             <div class="details">
-                <div class="location-contact">
-                    <div class="icon"><img src="icons/location-white.svg" alt="Location"></div>
-                    <h5>Adress</h5>
-                    <p>Higher School of Technology, Road ElJadida, Casablanca</p>
-                </div>
-                <div class="email-contact">
-                    <div class="icon"><img src="icons/envelope-white.svg" alt="Location"></div>
-                    <h5>Email</h5>
-                    <p>thetechspace@gmail.com<br>thetechspacecontact@gmail.com</p>
-                </div>
-                <div class="phone-contact">
-                    <div class="icon"><img src="icons/phone-white.svg" alt="Location"></div>
-                    <h5>Phone</h5>
-                    <p>+212 581 054 154<br>+212 987 654 321</p>
-                </div>
+                <img src="icons/fast-del.svg" alt="Fast delivery">
+                <h4>Fast Delivery</h4>
+                <p>Lightning-fast delivery guaranteed!</p>
+            </div>
+            <div class="details">
+                <img src="icons/free.svg" alt="Free shiping">
+                <h4>Free Shiping</h4>
+                <p>Shipping's on us, every time.</p>
+            </div>
+            <div class="details">
+                <img class="bestquality-icon" src="icons/bestquality.png" alt="Best quality">
+                <h4>Best Quality</h4>
+                <p>Best quality guaranteed with every product.</p>
             </div>
         </section>
         <div class="to-up">
@@ -108,7 +191,7 @@
                 <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
             </svg>
         </div>
-        
+
         <div class="burger-menu" id="burger-menu">
             <div class="menu-header">
                 <h1>MENU</h1>
@@ -171,15 +254,16 @@
         </div>
 
         <div class="dark-overlay"></div>
+
     </main>
     <footer>
         <div class="top-footer">
             <div class="footer-nav">
                 <ul class="footer-links">
-                    <li><h5><a href="index.php">HOME</a></h5></li>
+                    <li><h5><a class="active" href="index.php">HOME</a></h5></li>
                     <li><h5><a href="#">MY ACCOUNT</a></h5></li>
                     <li><h5><a href="products.php">PRODUCTS</a></h5></li>
-                    <li><h5><a class="active" href="contact.php">CONTACT</a></h5></li>
+                    <li><h5><a href="contact.php">CONTACT</a></h5></li>
                     <li class="footer-admin"></li>
                     <li class="copyright">© 2024 TheTechSpace. All Rights Reserved.</li>
                 </ul>
@@ -210,6 +294,6 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/send_email.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>

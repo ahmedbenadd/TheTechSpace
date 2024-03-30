@@ -21,29 +21,11 @@ function fetchAndStoreUserData() {
                 if (checkLogin(userData)) {
                     document.querySelector('.acc').innerHTML = `<a style="cursor: default;"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;${userData['full_name']}</a>`;
                     document.querySelector('.user-a').setAttribute('href', '#');
-                    document.querySelector('.down-li').innerHTML = '<li><a class="logout-button">LOG OUT</a></li>';      
+                    document.querySelector('.down-li').innerHTML = '<li><a class="logout-button" onclick="logout();">LOG OUT</a></li>';      
                     if (userData['is_admin'] == 1) {
-                            document.querySelector('.down-li').innerHTML = '<li><a href="../admin/dashboard.php" target="_blank">ADMINISTRATION</a></li><li><a href="#" class="logout-button">LOG OUT</a></li>';
-                            document.querySelector('.footer-admin').innerHTML = '<h5><a href="/TheTechSpace/admin/dashboard.php" target="_blank">ADMINISTRATION</a></h5>';
+                            document.querySelector('.down-li').innerHTML = '<li><a href="admin/dashboard.php">ADMINISTRATION</a></li><li><a href="#" onclick="logout();" class="logout-button">LOG OUT</a></li>';
+                            document.querySelector('.footer-admin').innerHTML = '<h5><a href="/TheTechSpace/admin/dashboard.php">ADMINISTRATION</a></h5>';
                     }
-                    document.querySelector('.logout-button').addEventListener('click', function(event) {
-                        event.preventDefault(event);
-
-                        $.ajax({
-                            url: "php/logout.php",
-                            type: "POST",
-                            success: function(data){ 
-                                console.log('Logout successful');
-                                localStorage.clear();
-                                window.location.href = 'index.php';
-                            },
-                            error: function(xhr, status, error){
-                                console.log('Error during logout:', error);
-                                localStorage.clear();
-                                window.location.href = 'index.php';
-                            }
-                        });
-                    });
                 }
             }
         },

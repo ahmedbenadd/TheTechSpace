@@ -21,6 +21,9 @@
                 if (password_verify($password, $row['password'])) {
                     session_start();
                     $_SESSION['id'] = $row['id'];
+                    if($row['is_admin'] == 1) {
+                        $_SESSION['is_admin'] = $row['is_admin'];
+                    }
                     $response = array(
                         'status' => 'signin_success',
                         'message' => 'Login successful',

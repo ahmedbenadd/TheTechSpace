@@ -87,7 +87,6 @@ function validateSignup() {
         document.getElementById("signup-submit").style.marginTop = "6px";
         document.getElementById('password').value = "";
         document.getElementById('c_password').value = "";
-        console.log('Attend cpass com')
         isValid = false;
     }
     return isValid;
@@ -155,7 +154,6 @@ signupSubmit.addEventListener('click', submitSignUp);
 /*--------------- SIGNIN FORM BLOCK ---------------*/
 /*_________________________________________________*/
 
-
 let signinSubmit = document.getElementById('signin-submit');
 signinSubmit.addEventListener('click', function (event) {
     event.preventDefault();
@@ -192,7 +190,6 @@ signinSubmit.addEventListener('click', function (event) {
                 if(responseData.status === "signin_success") {
                     document.getElementById('email-s').value = emailS;
                     document.getElementById('password-s').value = "";
-                    console.log(responseData.message);
                     window.location.href = "index.php";
                 }
                 else if(responseData.status === "signin_error") {

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="css/hdr&ftr.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/contact.css?v=<?php echo time(); ?>">
     <link rel="icon" type="icon/png" href="logos/logo-nobg.png">
 </head>
 <body>
@@ -17,7 +17,7 @@
                 <li><a><img src="icons/location-dot-solid.svg" class="icons-top-header location-icon">&nbsp; Road El Jadida Casablanca</a></li>
             </ul>
             <ul class="header-links header-links2">
-            <li class="acc"><a href="login.php"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;Log In</a></li>
+                <li class="acc"><a href="login.php"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;Log In</a></li>
             </ul>
         </div>
         <div id="header">
@@ -33,19 +33,19 @@
             <a href="index.php" class="logo"><img src="logos/logo1.jpg" alt="The TechSpace logo"></a>
             <nav>
                 <ul>
-                <span class="to-hide">
-                    <li><a href="index.php">HOME</a></li>
-                    <li class="dropdown">
-                        <a class="a-categories" href="#">CATEGORIES</a>
-                        <ul>
-                            <li><a href="#">Laptops</a></li>
-                            <li><a href="#">Smartphones</a></li>
-                            <li><a href="#">Components</a></li>
-                            <li><a href="#">Accessories</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="active" href="products.php">PRODUCTS</a></li>
-                    <li><a href="contact.php">CONTACT</a></li>
+                    <span class="to-hide">
+                        <li><a href="index.php">HOME</a></li>
+                        <li class="dropdown">
+                            <a class="a-categories" href="#">CATEGORIES</a>
+                            <ul>
+                                <li><a href="#">Laptops</a></li>
+                                <li><a href="#">Smartphones</a></li>
+                                <li><a href="#">Components</a></li>
+                                <li><a href="#">Accessories</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="products.php">PRODUCTS</a></li>
+                        <li><a  class="active" href="contact.php">CONTACT</a></li>
                     </span>
                     <span class="to-keep">
                         <li class="cart-li"><a class="cart-a cart-show" ><img class="cart-icon" src="icons/cart.svg" alt="Cart"></a></li>
@@ -56,6 +56,53 @@
         </div>
     </header>
     <main>
+        <section class="contact-form">
+            <h1 class="sectionHeader">Get In Touch!</h1>
+            <div class="contactForm">
+                <form action="" method="">
+                    <div class="alert alert-3-danger">
+                        <h3 class="alert-title" >Email Sent Successfully!</h3>
+                        <p class="alert-content">A confirmation email has been sent to: benaddouahmed2005@gmail.com</p>
+                    </div>
+                    <h1 class="sub-heading">Need Support !</h1>
+                    <input name="f_name" id="full_name" type="text" class="input" placeholder="full name" required>
+                    <span class="er-name error"></span>
+                    <input type="text" id="email" name="email" class="input" placeholder="your email" required>
+                    <span class="er-email error"></span>
+                    <input type="text" id="subject" name="subject" class="input" placeholder="your Subject" required>
+                    <span class="er-subject error"></span>
+                    <textarea class="input" id="message" name="message" cols="30" rows="8" placeholder="Your message..." required></textarea>
+                    <span class="er-message error"></span>
+                    <button type="button" id="send_email" class="input submit" name="submit">Send Message</button>
+                </form>
+                <div class="map-container">
+                    <div class="mapBg"></div>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.4634760241215!2d-7.657725024198199!3d33.541332473353606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62cdf71a3ad5f%3A0xae343a1ea1f2b204!2sSuperior%20School%20of%20Technology!5e0!3m2!1sen!2sma!4v1710950199971!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info">
+            <h1>Contact Us</h1>
+            <div class="details">
+                <div class="location-contact">
+                    <div class="icon"><img src="icons/location-white.svg" alt="Location"></div>
+                    <h5>Adress</h5>
+                    <p>Higher School of Technology, Road ElJadida, Casablanca</p>
+                </div>
+                <div class="email-contact">
+                    <div class="icon"><img src="icons/envelope-white.svg" alt="Location"></div>
+                    <h5>Email</h5>
+                    <p>thetechspace@gmail.com<br>thetechspacecontact@gmail.com</p>
+                </div>
+                <div class="phone-contact">
+                    <div class="icon"><img src="icons/phone-white.svg" alt="Location"></div>
+                    <h5>Phone</h5>
+                    <p>+212 581 054 154<br>+212 987 654 321</p>
+                </div>
+            </div>
+        </section>
         <div class="to-up">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#d10024" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
@@ -131,8 +178,9 @@
                 <ul class="footer-links">
                     <li><h5><a href="index.php">HOME</a></h5></li>
                     <li><h5><a href="#">MY ACCOUNT</a></h5></li>
-                    <li><h5><a class="active" href="products.php">PRODUCTS</a></h5></li>
-                    <li><h5><a href="contact.php">CONTACT</a></h5></li>
+                    <li><h5><a href="products.php">PRODUCTS</a></h5></li>
+                    <li><h5><a class="active" href="contact.php">CONTACT</a></h5></li>
+                    <li class="footer-admin"></li>
                     <li class="copyright">© 2024 TheTechSpace. All Rights Reserved.</li>
                 </ul>
             </div>
@@ -162,5 +210,7 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/send_email.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>

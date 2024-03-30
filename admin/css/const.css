@@ -128,31 +128,31 @@ li.logo-navbar,#navbar a.logo-navbar {
 }
 
 #navbar a.dash:hover img.dash {
-  content: url("../icons/dashboard2.png");
+  content: url("/TheTechSpace/icons/dashboard2.png");
 }
 
 #navbar a.customers:hover img.customers {
-  content: url("../icons/customers2.svg");
+  content: url("/TheTechSpace/icons/customers2.svg");
 }
 
 #navbar a.products:hover img.products {
-  content: url("../icons/products2.svg");
+  content: url("/TheTechSpace/icons/products2.svg");
 }
 
 #navbar a.products:hover img.cheveron{
-  content: url("../icons/cheveron-right2.svg");
+  content: url("/TheTechSpace/icons/cheveron-right2.svg");
 }
 
 #navbar a.orders:hover img.orders {
-  content: url("../icons/orders2.svg");
+  content: url("/TheTechSpace/icons/orders2.svg");
 }
 
 #navbar a.logo-navbar:hover img.logo-navbar {
-  content: url("../logos/logo-red-nobg-2.png");
+  content: url("/TheTechSpace/logos/logo-red-nobg-2.png");
 }
 
 #navbar a.logout:hover img.logout {
-  content: url("../icons/logout2.svg");
+  content: url("/TheTechSpace/icons/logout2.svg");
 }
 
 .cheveron {
