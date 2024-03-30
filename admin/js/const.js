@@ -24,8 +24,5 @@ document.getElementById('products').addEventListener('click', function() {
 
 let userData = JSON.parse(localStorage.getItem('userData'));
 
-// if(userData['is_admin'] == 1) {
-//     document.querySelector('.user_fname').innerHTML = userData['full_name'];
-// } else {
-//     window.location.href = "/TheTechSpace/index.php";
-// }
+document.querySelector('.user_fname').innerHTML = userData['full_name'];
+// window.location.href = "/TheTechSpace/index.php";

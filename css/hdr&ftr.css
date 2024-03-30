@@ -12,7 +12,7 @@ body {
   }
   
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -441,6 +441,7 @@ span.cheveron-rotated {
           /* ACCOUNT */
           
 .acc-menu {
+  overflow-y: auto;
   position: fixed;
   top: 0;
   right: -150%;
@@ -456,6 +457,129 @@ span.cheveron-rotated {
 
 .acc-menu-showed {
   right: 0;
+}
+
+.login-message {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.login-message p {
+  margin: 0;
+  font-size: 19px;
+  color: #333;
+}
+
+.login-message a {
+  color: #96001a;
+  text-decoration: none;
+}
+
+.login-message a:hover {
+  text-decoration: underline;
+}
+
+
+.acc-menu .content {
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: none;
+}
+
+.acc-menu .acc-name {
+  color: #15161D;
+  font-size: 25px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.acc-menu .acc-title {
+  color: #1e1f29;
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 12px;
+  border-bottom: 1px solid #d10024;
+  padding-bottom: 2px;
+}
+
+.acc-menu .acc-data .input-group label {
+  color: #1e1f29;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  font-size: 13px;
+}
+
+.acc-menu .acc-data .input-group input[type="text"],
+.acc-menu .acc-data .input-group input[type="email"],
+.acc-menu .acc-data .input-group input[type="password"] {
+  width: calc(100% - 22px);
+  height: 22px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.acc-menu .acc-data .acc-error {
+  margin: 4px 0 8px 0;
+}
+
+.acc-menu .acc-data .save {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #d10024;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.acc-menu .acc-data .save:hover {
+  background-color: #96001a; 
+}
+
+.additional-options {
+  margin-top: 20px;
+  display: flex;
+}
+
+.additional-options a {
+  flex: 1;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px auto 25px auto;
+}
+
+.additional-options a#logoutButton {
+  background-color: #d10024; 
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+.additional-options a#logoutButton:hover {
+  background-color: #96001a;
+}
+
+.additional-options a#administratorButton {
+  background-color: #15161D;
+  color: #ffffff;
+  margin-left: 5px;
+}
+
+.additional-options a#administratorButton:hover {
+  background-color: #1e1f29;
 }
 
           /* CART */

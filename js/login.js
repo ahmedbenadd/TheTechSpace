@@ -190,6 +190,7 @@ signinSubmit.addEventListener('click', function (event) {
                 if(responseData.status === "signin_success") {
                     document.getElementById('email-s').value = emailS;
                     document.getElementById('password-s').value = "";
+                    window.location.reload();
                     window.location.href = "index.php";
                 }
                 else if(responseData.status === "signin_error") {

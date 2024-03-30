@@ -14,6 +14,7 @@
                 'email' => $row['email'],
                 'username' => $row['username'],
                 'is_admin' => $row['is_admin'],
+                'shipping_adress' => $row['shipping_adress'],
                 'is_active' => $row['is_active']
             );
             $conn->close();

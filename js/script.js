@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function() {
 // __________ GETTING USER DATA __________//
 
 function checkLogin(userData) {
@@ -8,35 +9,40 @@ function checkLogin(userData) {
     }
 }
 
-function fetchAndStoreUserData() {
-    $.ajax({
-        url: "php/user_data.php",
-        type: "POST",
-        success: function(data){ 
-            var responseData = JSON.parse(data);
-            if (responseData.login) {
-                localStorage.setItem('userData', JSON.stringify(responseData));
+var userData;
 
-                let userData = JSON.parse(localStorage.getItem('userData'));
-                if (checkLogin(userData)) {
-                    document.querySelector('.acc').innerHTML = `<a style="cursor: default;"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;${userData['full_name']}</a>`;
-                    document.querySelector('.user-a').setAttribute('href', '#');
-                    document.querySelector('.down-li').innerHTML = '<li><a class="logout-button" onclick="logout();">LOG OUT</a></li>';      
-                    if (userData['is_admin'] == 1) {
-                            document.querySelector('.down-li').innerHTML = '<li><a href="admin/dashboard.php">ADMINISTRATION</a></li><li><a href="#" onclick="logout();" class="logout-button">LOG OUT</a></li>';
-                            document.querySelector('.footer-admin').innerHTML = '<h5><a href="/TheTechSpace/admin/dashboard.php">ADMINISTRATION</a></h5>';
-                    }
-                }
+$.ajax({
+    url: "php/user_data.php",
+    type: "POST",
+    success: function(data){ 
+        var responseData = JSON.parse(data);
+        localStorage.setItem('userData', JSON.stringify(responseData));
+        
+    },
+    error: function(xhr, status, error){
+        console.log('ERROR IN PHP USER DATA');
+    },
+    complete: function () {
+        userData = JSON.parse(localStorage.getItem('userData'));
+        if (userData.login) {
+            document.querySelector('.login-message').style.display = "none";
+            document.querySelector('.content').style.display = "block";
+            document.querySelector('.acc').innerHTML = `<a style="cursor: default;"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;${userData.full_name}</a>`;
+            document.querySelector('.user-a').setAttribute('href', '#');
+            document.querySelector('.down-li').innerHTML = '<li><a class="logout-button" onclick="logout();">LOG OUT</a></li>';
+            document.querySelector('.first-name').innerHTML = `Hi, ${userData.full_name.split(" ")[0]}`;
+            document.querySelector('#acc_full_name').value = userData.full_name;
+            document.querySelector('#acc_email').value = userData.email;
+            document.querySelector('#acc_username').value = userData.email;
+            document.querySelector('#shipping_adress').value = userData.shipping_adress;      
+            if (userData['is_admin'] == 1) {
+                document.querySelector('.additional-options').innerHTML += '<a id="administratorButton" href="/TheTechSpace/admin/dashboard.php">Administration</a>';
+                document.querySelector('.down-li').innerHTML = '<li><a href="admin/dashboard.php">ADMINISTRATION</a></li><li><a href="#" onclick="logout();" class="logout-button">LOG OUT</a></li>';
+                document.querySelector('.footer-admin').innerHTML = '<h5><a href="/TheTechSpace/admin/dashboard.php">ADMINISTRATION</a></h5>';
             }
-        },
-        error: function(xhr, status, error){
-            console.log('ERROR IN PHP USER DATA');
         }
-    });
-}
-
-fetchAndStoreUserData();
-
+    }
+});
 // __________ SCROLL TO UP BTN __________//
 
 let toUp = document.querySelector(".to-up");
@@ -111,4 +117,5 @@ darkOverlay.addEventListener("click", function () {
     burgerMenu.classList.remove("burger-menu-showed");
     accMenu.classList.remove("acc-menu-showed");
     cartMenu.classList.remove('cart-menu-showed');
+});
 });
