@@ -188,7 +188,6 @@
             <div class="footer-nav">
                 <ul class="footer-links">
                     <li><h5><a href="index.php">HOME</a></h5></li>
-                    <li><h5><a href="#">MY ACCOUNT</a></h5></li>
                     <li><h5><a class="active" href="products.php">PRODUCTS</a></h5></li>
                     <li><h5><a href="contact.php">CONTACT</a></h5></li>
                     <li class="footer-admin"></li>
