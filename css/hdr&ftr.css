@@ -492,8 +492,8 @@ span.cheveron-rotated {
 .acc-menu .acc-name {
   color: #15161D;
   font-size: 25px;
-  margin-bottom: 15px;
-  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .acc-menu .acc-title {
@@ -546,7 +546,7 @@ span.cheveron-rotated {
 }
 
 .additional-options {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
 }
 
@@ -559,7 +559,7 @@ span.cheveron-rotated {
   transition: background-color 0.3s ease-in-out;
   text-decoration: none;
   text-align: center;
-  margin: 10px auto 25px auto;
+  margin: 5px auto 10px auto;
 }
 
 .additional-options a#logoutButton {
@@ -573,13 +573,13 @@ span.cheveron-rotated {
 }
 
 .additional-options a#administratorButton {
-  background-color: #15161D;
+  background-color: #192054;
   color: #ffffff;
   margin-left: 5px;
 }
 
 .additional-options a#administratorButton:hover {
-  background-color: #1e1f29;
+  background-color: #000000;
 }
 
           /* CART */

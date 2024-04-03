@@ -290,9 +290,6 @@
                     </div>
                     <input type="button" value="SAVE" class="save">
                 </form>
-                <div class="additional-options">
-                    <a id="logoutButton" onclick="logout();">Logout</a>
-                </div>
             </div>
         </div>
 
@@ -309,7 +306,9 @@
                     </svg>
                 </span>
             </div>
-            <h4 style="color: black; text-align:center;margin-top: 50px;">Your cart is empty.</h4>
+            <div class="login-message">
+                <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your cart.</p>
+            </div>
         </div>
 
         <div class="dark-overlay"></div>

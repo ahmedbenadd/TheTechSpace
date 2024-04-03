@@ -160,9 +160,6 @@
                     </div>
                     <input type="button" value="SAVE" class="save">
                 </form>
-                <div class="additional-options">
-                    <a id="logoutButton" onclick="logout();">Logout</a>
-                </div>
             </div>
         </div>
 
@@ -179,7 +176,9 @@
                     </svg>
                 </span>
             </div>
-            <h4 style="color: black; text-align:center;margin-top: 50px;">Your cart is empty.</h4>
+            <div class="login-message">
+                <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your cart.</p>
+            </div>
         </div>
 
         <div class="dark-overlay"></div>
@@ -192,6 +191,7 @@
                     <li><h5><a href="#">MY ACCOUNT</a></h5></li>
                     <li><h5><a class="active" href="products.php">PRODUCTS</a></h5></li>
                     <li><h5><a href="contact.php">CONTACT</a></h5></li>
+                    <li class="footer-admin"></li>
                     <li class="copyright">© 2024 TheTechSpace. All Rights Reserved.</li>
                 </ul>
             </div>
