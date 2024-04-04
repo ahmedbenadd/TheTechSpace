@@ -52,17 +52,68 @@ function accData () {
     document.querySelector('#acc_full_name').value = userData.full_name;
     document.querySelector('#acc_email').value = userData.email;
     document.querySelector('#acc_username').value = userData.username;
-    document.querySelector('#shipping_adress').value = userData.shipping_adress;
+    document.querySelector("#savePass").addEventListener('click', function(event) {event.preventDefault(); updateAccPass();});
 };
 
 function accDataAdmin () {
     document.querySelector('.additional-options').innerHTML += '<a id="administratorButton" href="/TheTechSpace/admin/dashboard.php">Administration</a>';
     document.querySelector('.down-li').innerHTML = '<li><a href="admin/dashboard.php">ADMINISTRATION</a></li><li><a href="#" onclick="logout();" class="logout-button">LOG OUT</a></li>';
     document.querySelector('.footer-admin').innerHTML = '<h5><a href="/TheTechSpace/admin/dashboard.php">ADMINISTRATION</a></h5>';
-}
+};
+function updateAccPass () {
+    let curPass = document.querySelector("#acc_current_password").value;
+    let newPass = document.querySelector("#acc_new_password").value;
+    let comPass = document.querySelector("#acc_confirm_password").value;
+    let isValid = true;
 
-function updateAccData () {
+    if (curPass.trim() === "") {
+        document.querySelector('.curr-pass-err').textContent = "*Please a valid password.";
+        isValid = false;
+    }
 
+    if (newPass.trim() === "") {
+        document.querySelector('.new-pass-err').textContent = "*Please a valid password.";
+        isValid = false;
+    }
+
+    if (comPass.trim() === "") {
+        document.querySelector('.comf-pass-err').textContent = "*Please a  valid password.";
+        isValid = false;
+    }
+
+    if(isValid) {
+        if (newPass.length < 8) {
+            document.querySelector('.new-pass-err').textContent = "*Password must be at least 8 characters long.";
+            isValid = false;
+        } else if (!/\d/.test(newPass)) {
+            document.querySelector('.new-pass-err').textContent = "*Password must contain at least one numeric character.";
+            isValid = false;
+        }
+        if(newPass !== comPass) {
+            document.querySelector('.comf-pass-err').textContent = "*Passwords do not match.";
+            isValid = false;
+        }
+    }
+    
+    if(isValid) {
+        $.ajax({
+            method: 'POST',
+            url: 'php/update_password.php',
+            data: {curPass: curPass, newPass: newPass, username: userData.username},
+            beforeSend : function() {
+                document.querySelector('#savePass').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="25px" height="15px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="32" stroke-width="8" stroke="#ffffff" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform></circle></svg>';
+            },
+            success : function (data, status, xhr) {
+                // var responseData = JSON.parse(data);
+                
+                    
+            },
+            complete : function() {
+                document.querySelector('#savePass').innerHTML = 'SAVE';
+            }
+     
+        });
+    }
 }
 
 // __________ CART MENU __________//
@@ -74,18 +125,6 @@ cartShow.onclick = function () {
     cartMenu.classList.add('cart-menu-showed');
     darkOverlay.style.display = "block";
 }
-
-function getCart (infos) {
-    if(infos) {
-        fullNameU = document.querySelector('acc_full_name');
-        emailU = document.querySelector('acc_email');
-        usernameU = document.querySelector('acc_username');
-        shippingAdressU = document.querySelector('shipping_address');
-        passwordU = document.querySelector('acc_password');
-    } else {
-
-    }
-};
 
 // __________ MENUS __________//
 
@@ -136,9 +175,7 @@ $.ajax({
     complete: function () {
         userData = JSON.parse(localStorage.getItem('userData'));
         if (userData.login) {
-            accData();
-            getCart();
-            // document.querySelector('').innerHTML = "";      
+            accData();  
             if (userData['is_admin'] == 1) {
                 accDataAdmin();
             }

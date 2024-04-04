@@ -130,10 +130,10 @@
                         <input type="text" id="acc_username" autocomplete="off">
                         <p class="acc-error"></p>
                     </div>
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <label for="shipping_address">Shipping Address</label>
                         <input type="text" id="shipping_adress" autocomplete="off">
-                    </div>
+                    </div> -->
                     <div class="input-group">
                         <label for="acc_password">Password</label>
                         <input type="password" id="acc_password" autocomplete="off">
