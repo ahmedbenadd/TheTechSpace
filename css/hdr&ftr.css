@@ -449,6 +449,7 @@ span.cheveron-rotated {
           
 .acc-menu {
   overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
   top: 0;
   right: -150%;
@@ -500,17 +501,21 @@ span.cheveron-rotated {
 .acc-menu .acc-name {
   color: #15161D;
   font-size: 25px;
-  margin-bottom: 10px;
-  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-top: 15px;
 }
 
 .acc-menu .acc-title {
   color: #1e1f29;
   font-size: 15px;
   margin-bottom: 10px;
-  margin-top: 12px;
+  margin-top: 15px;
   border-bottom: 1px solid #d10024;
   padding-bottom: 2px;
+}
+
+.acc-menu .acc-title:last-of-type {
+  margin-bottom: 5px;
 }
 
 .acc-menu .acc-data .input-group label {
@@ -525,11 +530,11 @@ span.cheveron-rotated {
 .acc-menu .acc-data .input-group input[type="email"],
 .acc-menu .acc-data .input-group input[type="password"] {
   width: calc(100% - 22px);
-  height: 22px;
+  height: 25px;
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .acc-menu .acc-data .acc-error {
@@ -549,7 +554,7 @@ span.cheveron-rotated {
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   font-size: 13px;
-  margin-top: 10px;
+  margin-top: 14px;
 }
 
 .acc-menu .acc-data .save:hover {
@@ -557,7 +562,7 @@ span.cheveron-rotated {
 }
 
 .additional-options {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
 }
 
@@ -591,6 +596,27 @@ span.cheveron-rotated {
 
 .additional-options a#administratorButton:hover {
   background-color: #000000;
+}
+
+.pass_success {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(56, 255, 56, 1);
+  color: #ffffff;
+  padding: 11px 29px;
+  border: 1px solid #91f657;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+  width: fit-content;
+}
+
+.pass_success_showed {
+  opacity: 1;
 }
 
           /* CART */

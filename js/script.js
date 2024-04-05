@@ -100,19 +100,46 @@ function updateAccPass () {
             method: 'POST',
             url: 'php/update_password.php',
             data: {curPass: curPass, newPass: newPass, username: userData.username},
-            beforeSend : function() {
+            dataType: 'json',
+            beforeSend: function() {
                 document.querySelector('#savePass').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="25px" height="15px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="32" stroke-width="8" stroke="#ffffff" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform></circle></svg>';
             },
-            success : function (data, status, xhr) {
-                // var responseData = JSON.parse(data);
-                
-                    
+            success: function(response) {
+                if (response.status === "password_updated") {
+                    document.querySelector("#acc_current_password").value = "";
+                    document.querySelector("#acc_new_password").value = "";
+                    document.querySelector("#acc_confirm_password").value = "";
+                    var successMessage = document.querySelector('.pass_success');
+                    successMessage.classList.add('pass_success_showed');
+                    setTimeout(function() {
+                        successMessage.classList.remove('pass_success_showed');
+                    }, 3000);
+                } else if (response.status === "cur_pass_incorrect") {
+                    document.querySelector("#acc_current_password").value = "";
+                    document.querySelector("#acc_new_password").value = "";
+                    document.querySelector("#acc_confirm_password").value = "";
+                    document.querySelector('.curr-pass-err').textContent = "*Current password is wrong.";
+                    setTimeout(function() {
+                        document.querySelector('.curr-pass-err').textContent = '';
+                    }, 5000);
+                } else {
+                    document.querySelector("#acc_current_password").value = "";
+                    document.querySelector("#acc_new_password").value = "";
+                    document.querySelector("#acc_confirm_password").value = "";
+                    var successMessage = document.querySelector('.pass_success');
+                    successMessage.textContent = "An error occured try again.";
+                    successMessage.style.backgroundColor = "red";
+                    successMessage.classList.add('pass_success_showed');
+                    setTimeout(function() {
+                        successMessage.classList.remove('pass_success_showed');
+                    }, 3000);
+                }
             },
-            complete : function() {
+            complete: function() {
                 document.querySelector('#savePass').innerHTML = 'SAVE';
             }
-     
         });
+        
     }
 }
 

@@ -36,7 +36,7 @@
                     <span class="to-hide">
                         <li><a href="index.php">HOME</a></li>
                         <li class="dropdown">
-                            <a class="a-categories" href="#">CATEGORIES</a>
+                            <a class="a-categories" href="products.php">CATEGORIES</a>
                             <ul>
                                 <li><a href="#">Laptops</a></li>
                                 <li><a href="#">Smartphones</a></li>
@@ -164,48 +164,36 @@
                 <form class="acc-data" action="" autocomplete="off">
                     <div class="input-group">
                         <label for="acc_full_name">Full Name</label>
-                        <input type="text" id="acc_full_name" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <input type="text" id="acc_full_name" autocomplete="off" readonly> 
                     </div>
                     <div class="input-group">
                         <label for="acc_email">Email</label>
-                        <input type="email" id="acc_email" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <input type="email" id="acc_email" autocomplete="off" readonly>
                     </div>
                     <div class="input-group">
                         <label for="acc_username">Username</label>
-                        <input type="text" id="acc_username" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <input type="text" id="acc_username" autocomplete="off" readonly>
                     </div>
-                    <!-- <div class="input-group">
-                        <label for="shipping_address">Shipping Address</label>
-                        <input type="text" id="shipping_adress" autocomplete="off">
-                    </div> -->
-                    <div class="input-group">
-                        <label for="acc_password">Password</label>
-                        <input type="password" id="acc_password" autocomplete="off">
-                        <p class="acc-error"></p>
-                    </div>
-                    <input type="button" value="SAVE" class="save">
                 </form>
-                <h4 class="acc-title">Password</h4>
+                <h4 class="acc-title">Update Your Password</h4>
+                <p class="pass_success">Password Updated Successfully</p>
                 <form class="acc-data" action="" autocomplete="off">
                     <div class="input-group">
                         <label for="acc_current_password">Current Password</label>
                         <input type="password" id="acc_current_password" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <p class="acc-error curr-pass-err"></p>
                     </div>
                     <div class="input-group">
                         <label for="acc_new_password">New Password</label>
                         <input type="password" id="acc_new_password" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <p class="acc-error new-pass-err"></p>
                     </div>
                     <div class="input-group">
                         <label for="acc_confirm_password">Confirm New Password</label>
                         <input type="password" id="acc_confirm_password" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <p class="acc-error comf-pass-err"></p>
                     </div>
-                    <input type="button" value="SAVE" class="save">
+                    <button class="save" id="savePass">SAVE</button>
                 </form>
             </div>
         </div>

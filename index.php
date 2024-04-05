@@ -36,7 +36,7 @@
                 <span class="to-hide">
                     <li><a class="active" href="index.php">HOME</a></li>
                     <li class="dropdown">
-                        <a class="a-categories" href="#">CATEGORIES</a>
+                        <a class="a-categories" href="products.php">CATEGORIES</a>
                         <ul>
                             <li><a href="#">Laptops</a></li>
                             <li><a href="#">Smartphones</a></li>
@@ -258,7 +258,8 @@
                         <input type="text" id="acc_username" autocomplete="off" readonly>
                     </div>
                 </form>
-                <h4 class="acc-title">Password</h4>
+                <h4 class="acc-title">Update Your Password</h4>
+                <p class="pass_success">Password Updated Successfully</p>
                 <form class="acc-data" action="" autocomplete="off">
                     <div class="input-group">
                         <label for="acc_current_password">Current Password</label>

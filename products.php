@@ -1,3 +1,6 @@
+<?php
+    include('php/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +39,7 @@
                 <span class="to-hide">
                     <li><a href="index.php">HOME</a></li>
                     <li class="dropdown">
-                        <a class="a-categories" href="#">CATEGORIES</a>
+                        <a class="a-categories" href="products.php">CATEGORIES</a>
                         <ul>
                             <li><a href="#">Laptops</a></li>
                             <li><a href="#">Smartphones</a></li>
@@ -56,6 +59,68 @@
         </div>
     </header>
     <main>
+
+
+        <?php
+            $query = "SELECT * FROM products";
+            if ($connStatus !== 'error') {
+                $result = mysqli_query($conn, $query);
+            }
+        ?>
+
+        <div class="main-wrapper">
+            <section id="filters">
+                <p>Total: <?php echo $result ? $result->num_rows : 0; ?></p>
+                <span class="select">
+                    <label for="sort-options">Sort by:</label>
+                    <select id="sort-options" onchange="sortProducts()">
+                        <option>Default</option>
+                        <option value="name-asc">Name (A to Z)</option>
+                        <option value="name-desc">Name (Z to A)</option>
+                        <option value="price-asc">Price (Low to High)</option>
+                        <option value="price-desc">Price (High to Low)</option>
+                    </select>
+                </span>
+            </section>
+            <section id="products_listing">
+                <?php
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                ?>
+                        <div class="product-card">
+                            <h3><?php echo $row["name"]; ?></h3>
+                            <div class="image">
+                                <img src="<?php echo $row["img_1"]; ?>" alt="" data-hover="<?php echo $row["img_2"]; ?>">
+                            </div>
+                            <div class="price">
+                                <span>$<?php echo $row["price"]; ?></span>
+                                <button type="button" class="price-button">add to cart</button>
+                            </div>
+                        </div>
+                <?php
+                    }
+                } else {
+                    echo "0 results";
+                }
+
+                if ($result !== null) {
+                    $result->close();
+                }
+                ?>
+            </section>
+        </div>
+
+
+    
+
+
+
+
+
+
+
+
+
         <div class="to-up">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#d10024" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
@@ -117,48 +182,36 @@
                 <form class="acc-data" action="" autocomplete="off">
                     <div class="input-group">
                         <label for="acc_full_name">Full Name</label>
-                        <input type="text" id="acc_full_name" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <input type="text" id="acc_full_name" autocomplete="off" readonly> 
                     </div>
                     <div class="input-group">
                         <label for="acc_email">Email</label>
-                        <input type="email" id="acc_email" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <input type="email" id="acc_email" autocomplete="off" readonly>
                     </div>
                     <div class="input-group">
                         <label for="acc_username">Username</label>
-                        <input type="text" id="acc_username" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <input type="text" id="acc_username" autocomplete="off" readonly>
                     </div>
-                    <!-- <div class="input-group">
-                        <label for="shipping_address">Shipping Address</label>
-                        <input type="text" id="shipping_adress" autocomplete="off">
-                    </div> -->
-                    <div class="input-group">
-                        <label for="acc_password">Password</label>
-                        <input type="password" id="acc_password" autocomplete="off">
-                        <p class="acc-error"></p>
-                    </div>
-                    <input type="button" value="SAVE" class="save">
                 </form>
-                <h4 class="acc-title">Password</h4>
+                <h4 class="acc-title">Update Your Password</h4>
+                <p class="pass_success">Password Updated Successfully</p>
                 <form class="acc-data" action="" autocomplete="off">
                     <div class="input-group">
                         <label for="acc_current_password">Current Password</label>
                         <input type="password" id="acc_current_password" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <p class="acc-error curr-pass-err"></p>
                     </div>
                     <div class="input-group">
                         <label for="acc_new_password">New Password</label>
                         <input type="password" id="acc_new_password" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <p class="acc-error new-pass-err"></p>
                     </div>
                     <div class="input-group">
                         <label for="acc_confirm_password">Confirm New Password</label>
                         <input type="password" id="acc_confirm_password" autocomplete="off">
-                        <p class="acc-error"></p>
+                        <p class="acc-error comf-pass-err"></p>
                     </div>
-                    <input type="button" value="SAVE" class="save">
+                    <button class="save" id="savePass">SAVE</button>
                 </form>
             </div>
         </div>
@@ -221,5 +274,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/logout.js"></script>
+    <script src="js/products.js"></script>
 </body>
 </html>
