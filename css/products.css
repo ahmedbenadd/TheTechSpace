@@ -67,6 +67,12 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.product-card .preview-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 .product-card h3 {
     height: 50px;
     margin: 10px auto 0 auto;

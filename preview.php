@@ -1,14 +1,34 @@
 <?php
-    include('php/config.php');    
+include('php/config.php');
+
+if (isset($_GET['ghijzs'])) {
+    $decoded_param = base64_decode($_GET['ghijzs']);
+    $productId = substr($decoded_param, 7);
+    $productId = intval($productId);
+    $query = "SELECT * FROM products WHERE id = $productId";
+    $result = $conn->query($query);
+    if ($result && $result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $conn->close();
+    } else {
+        $conn->close();
+        header('location: products.php');
+        exit;
+    }
+} else {
+    $conn->close();
+    header('location: products.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title><?php echo $row['name']; ?></title>
     <link rel="stylesheet" href="css/hdr&ftr.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/preview.css">
     <link rel="icon" type="icon/png" href="logos/logo-nobg.png">
 </head>
 <body>
@@ -47,7 +67,7 @@
                             <li><a href="#">Accessories</a></li>
                         </ul>
                     </li>
-                    <li><a class="active" href="products.php">PRODUCTS</a></li>
+                    <li><a href="products.php">PRODUCTS</a></li>
                     <li><a href="contact.php">CONTACT</a></li>
                     </span>
                     <span class="to-keep">
@@ -59,56 +79,54 @@
         </div>
     </header>
     <main>
-
-
-        <?php
-            $query = "SELECT * FROM products";
-            $result = mysqli_query($conn, $query);
-        ?>
-
-        <div class="main-wrapper">
-            <section id="filters">
-                <p>Total: <?php echo $result ? $result->num_rows : 0; ?></p>
-                <span class="select">
-                    <label for="sort-options">Sort by:</label>
-                    <select id="sort-options" onchange="sortProducts()">
-                        <option>Default</option>
-                        <option value="name-asc">Name (A to Z)</option>
-                        <option value="name-desc">Name (Z to A)</option>
-                        <option value="price-asc">Price (Low to High)</option>
-                        <option value="price-desc">Price (High to Low)</option>
-                    </select>
-                </span>
-            </section>
-            <section id="products_listing">
-                <?php
-                if ($result && $result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                ?>
-                        <div class="product-card">
-                        <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=' . $row['id']); ?>">
-                                <h3><?php echo $row["name"]; ?></h3>
-                                <div class="image">
-                                    <img src="<?php echo $row["img_1"]; ?>" alt="" data-hover="<?php echo $row["img_2"]; ?>">
-                                </div>
-                            </a>
-                            <div class="price">
-                                <span>$<?php echo $row["price"]; ?></span>
-                                <button type="button" class="price-button">add to cart</button>
-                            </div>
+        <section class="preview">
+            <div class="preview-container">
+                <div class="in-container">
+                    <div class="product-images">
+                        <?php
+                        echo '<div class="main-image"><img id="main-image" src="'.$row['img_1'].'" alt="Main Product Image"></div>';
+                        echo '<div class="thumbnail-images">';
+                        echo '<img class="thumbnail" src="'.$row['img_1'].'" onclick="changeImage(\''.$row['img_1'].'\')" alt="Product Image">';
+                        echo '<img class="thumbnail" src="'.$row['img_2'].'" onclick="changeImage(\''.$row['img_2'].'\')" alt="Product Image">';
+                        echo '<img class="thumbnail" src="'.$row['img_3'].'" onclick="changeImage(\''.$row['img_3'].'\')" alt="Product Image">';
+                        echo '<img class="thumbnail" src="'.$row['img_4'].'" onclick="changeImage(\''.$row['img_4'].'\')" alt="Product Image">';
+                        echo '</div>';
+                        ?>
+                    </div>
+                    <div class="product-details">
+                        <h2 class="product-name"><?php echo $row['name']; ?></h2>
+                        <p class="product-category">Category: <span><?php echo $row['category']; ?></span></p>
+                        <div class="product-price">
+                            <h3 class="price">$<?php echo $row['price']; ?></h3>
+                            <span class="product-available">
+                                <?php
+                                    if($row['quantity'] == 0) {
+                                        echo "OUT OF STOCK";
+                                    } else {
+                                        echo "IN STOCK";
+                                    }
+                                ?>
+                            </span>
                         </div>
-                <?php
-                    }
-                } else {
-                    echo "0 results";
-                }
+                        <p class="description"><?php echo $row['description']; ?></p>
+                        <div class="add-to-cart">
+                            <label for="quantity">Quantity &nbsp;</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+                            <button type="button" >ADD TO CART</button>
+                        </div>
 
-                if ($result !== null) {
-                    $result->close();
-                }
-                ?>
-            </section>
-        </div>
+                    </div>
+                </div>
+                <div class="in-container long-description">
+                    <ul class="tab-nav">
+                        <li class="title">Description</li>
+                        <li>
+                        <?php echo $row['long_description']; ?>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <div class="to-up">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#d10024" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
@@ -230,7 +248,7 @@
             <div class="footer-nav">
                 <ul class="footer-links">
                     <li><h5><a href="index.php">HOME</a></h5></li>
-                    <li><h5><a class="active" href="products.php">PRODUCTS</a></h5></li>
+                    <li><h5><a href="products.php">PRODUCTS</a></h5></li>
                     <li><h5><a href="contact.php">CONTACT</a></h5></li>
                     <li class="footer-admin"></li>
                     <li class="copyright">© 2024 TheTechSpace. All Rights Reserved.</li>
@@ -262,7 +280,7 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/preview.js"></script>
     <script src="js/logout.js"></script>
-    <script src="js/products.js"></script>
 </body>
 </html>
