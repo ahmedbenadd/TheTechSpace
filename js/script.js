@@ -43,7 +43,7 @@ accShow.onclick = function () {
 }
 
 function accData () {
-    document.querySelector('.login-message').style.display = "none";
+    document.querySelector('.acc-login-message').style.display = "none";
     document.querySelector('.content').style.display = "block";
     document.querySelector('.acc').innerHTML = `<a style="cursor: default;"><img src="icons/user-solid.svg" class="icons-top-header">&nbsp;&nbsp;${userData.full_name}</a>`;
     document.querySelector('.user-a').setAttribute('href', '#');
@@ -153,6 +153,11 @@ cartShow.onclick = function () {
     darkOverlay.style.display = "block";
 }
 
+function cartData () {
+    document.querySelector('.cart-login-message').style.display = "none";
+    document.querySelector('.cart-content').style.display = "block";
+}
+
 // __________ MENUS __________//
 
 let menuHeaders = document.querySelectorAll('.menu-header');
@@ -202,7 +207,8 @@ $.ajax({
     complete: function () {
         userData = JSON.parse(localStorage.getItem('userData'));
         if (userData.login) {
-            accData();  
+            accData();
+            cartData();  
             if (userData['is_admin'] == 1) {
                 accDataAdmin();
             }

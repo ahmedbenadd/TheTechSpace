@@ -60,3 +60,18 @@ function sortProducts() {
 
     displaySortedProducts(sortedProducts);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            userData = JSON.parse(localStorage.getItem('userData'));
+            if(userData.login) {
+                const productId = this.getAttribute('data-product-id');
+                console.log('Add product with ID ' + productId + ' to cart');
+            }
+            
+        });
+    });
+});

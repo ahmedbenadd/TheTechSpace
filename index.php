@@ -1,3 +1,7 @@
+<?php
+    include('php/config.php');
+    session_start();    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -235,7 +239,7 @@
                     </svg>
                 </span>
             </div>
-            <div class="login-message">
+            <div class="acc-login-message">
                 <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your account.</p>
             </div>
             <div class="content">
@@ -294,9 +298,69 @@
                     </svg>
                 </span>
             </div>
-            <div class="login-message">
+            <div class="cart-login-message">
                 <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your cart.</p>
             </div>
+            <div class="cart-content">
+                <div class="cart-items-container">
+                    <?php
+                    $query = "SELECT product_id, quantity FROM cart WHERE user_id = '" . $_SESSION["id"] . "'";
+                    $result = mysqli_query($conn, $query);
+
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        $total_price = 0;
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $product_id = $row["product_id"];
+                            $quantity = $row["quantity"];
+
+                            $product_query = "SELECT name, img_1, price FROM products WHERE id = '" . $product_id . "'";
+                            $product_result = mysqli_query($conn, $product_query);
+
+                            if ($product_result && mysqli_num_rows($product_result) > 0) {
+                                $product = mysqli_fetch_assoc($product_result);
+                    ?>
+                                <div class="cart-item">
+                                    <img src="<?php echo $product['img_1']; ?>" alt="<?php echo $product['name']; ?>" class="cart-item-image">
+                                    <div class="cart-item-details">
+                                        <h3 class="cart-item-name"><?php echo $product['name']; ?></h3>
+                                        <div class="price-quantity-container">
+                                            <span class="cart-item-price">$<?php echo $product['price']; $total_price += $product['price']; ?></span>
+                                            <div class="quantity-container">
+                                                <label for="qty-<?php echo $product_id; ?>" class="quantity-label">Qty:</label>
+                                                <input type="number" id="qty-<?php echo $product_id; ?>" class="cart-item-quantity" value="<?php echo $quantity; ?>" max="20" min="1">
+                                                <button class="sync-qty-button">
+                                                    <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.3935 5.37371C18.0253 6.70569 19.8979 10.7522 18.5761 14.4118C17.6363 17.0135 15.335 18.7193 12.778 19.0094M12.778 19.0094L13.8253 17.2553M12.778 19.0094L14.4889 20M9.60651 18.6263C5.97465 17.2943 4.10205 13.2478 5.42394 9.58823C6.36371 6.98651 8.66504 5.28075 11.222 4.99059M11.222 4.99059L10.1747 6.74471M11.222 4.99059L9.51114 4" stroke="#464455" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <button class="remove-item-button">x</button>
+                                    </div>
+                                </div>
+                    <?php
+                            }
+                            mysqli_free_result($product_result);
+                        }
+                    } else {
+                        echo "<p class='empty-cart-message'>Your cart is empty.</p>";
+                    }
+
+                    ?>
+                </div>
+                <div class="cart-summary">
+                    <span class="total-items">
+                        <?php
+                        echo mysqli_num_rows($result) . ' ' . (mysqli_num_rows($result) === 1 ? '<span>Item</span>' : '<span>Items</span>');
+                        mysqli_free_result($result);
+                        ?>
+                    </span>
+                    <span class="total-price">Total : <span>$<?php echo $total_price; ?></span></span>
+                    <a href="products.php" class="continue-shopping">Browse</a>
+                    <button class="checkout">Checkout</button>
+                </div>
+            </div>
+
+
+
         </div>
 
         <div class="dark-overlay"></div>

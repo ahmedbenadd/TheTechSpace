@@ -9,14 +9,11 @@ if (isset($_GET['ghijzs'])) {
     $result = $conn->query($query);
     if ($result && $result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        $conn->close();
     } else {
-        $conn->close();
         header('location: products.php');
         exit;
     }
 } else {
-    $conn->close();
     header('location: products.php');
     exit;
 }
@@ -124,6 +121,37 @@ if (isset($_GET['ghijzs'])) {
                         <?php echo $row['long_description']; ?>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-products">
+            <div class="related-container">
+                <h1 class="section-title">RELATED PRODUCTS</h1>
+                <div class="related-listing">
+                    <?php
+                        $query = "SELECT * FROM products WHERE category = '" . $row["category"] . "' AND id != '" . $row['id'] . "' LIMIT 4";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
+                        <div class="product-card">
+                        <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=' . $row['id']); ?>">
+                                <h3><?php echo $row["name"]; ?></h3>
+                                <div class="image">
+                                    <img src="<?php echo $row["img_1"]; ?>" alt="" data-hover="<?php echo $row["img_2"]; ?>">
+                                </div>
+                            </a>
+                            <div class="price">
+                                <span>$<?php echo $row["price"]; ?></span>
+                                <button type="button" class="price-button">add to cart</button>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    if ($result !== null) {
+                        $result->close();
+                    }
+                    ?>
                 </div>
             </div>
         </section>

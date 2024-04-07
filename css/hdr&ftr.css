@@ -275,12 +275,12 @@ li.cart-li {
   border-bottom: solid #b9babc 1px;
   height: fit-content;
   padding: 0 20px;
-  position: -webkit-sticky; /* For Safari */
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: #ffffff; /* Adjust based on your color scheme */
+  background-color: #ffffff;
   z-index: 10;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), /* Horizontal, Vertical, Blur, Spread, Color */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
               0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -468,25 +468,25 @@ span.cheveron-rotated {
   right: 0;
 }
 
-.login-message {
+.acc-login-message, .cart-login-message {
   padding: 20px;
   border-radius: 8px;
   text-align: center;
   margin-top: 80px;
 }
 
-.login-message p {
+.acc-login-message p, .cart-login-message p {
   margin: 0;
   font-size: 19px;
   color: #333;
 }
 
-.login-message a {
+.acc-login-message a , .cart-login-message a {
   color: #96001a;
   text-decoration: none;
 }
 
-.login-message a:hover {
+.acc-login-message a:hover , .cart-login-message a:hover {
   text-decoration: underline;
 }
 
@@ -633,11 +633,207 @@ span.cheveron-rotated {
   border-left: solid #d10024;
   box-shadow: -25px 5px 20px rgba(0, 0, 0, 0.1);
   z-index: 1001;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .cart-menu-showed {
   right: 0;
 }
+
+.cart-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.cart-item {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1px solid #ccc; */
+  padding: 10px;
+  position: relative;
+  padding-top: 5px;
+}
+
+.cart-item-image {
+  width: 72px;
+  height: auto;
+  margin-right: 8px;
+}
+
+.cart-item-details {
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.cart-item-name {
+  margin: 0;
+  color: #15161D;
+  font-size: 15.5px;
+  font-weight: normal;
+  text-align: left;
+  margin-right: auto;
+  width: 50%;
+}
+
+.price-container {
+  display: block;
+}
+
+.price-quantity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 50%;
+  margin: auto;
+}
+
+.quantity-container {
+  display: flex;
+  align-items: center;
+
+}
+
+.quantity-label {
+  margin-right: 5px;
+  color: #464455;
+  font-size: 13.5px;
+}
+
+.cart-item-quantity {
+  width: 30px;
+  text-align: center;
+  color: #464455;
+  border: none;
+  border-bottom: solid 1px #464455;
+  padding-bottom: 5px;
+}
+
+.cart-item-quantity:focus {
+  outline: none;
+  border-bottom: solid 1px #000000;
+}
+
+.sync-qty-button {
+  width: 33px;
+  height: 33px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+.cart-item-price {
+  margin: auto;
+  color: #15161D;
+  font-family: monospace;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.remove-item-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: .5px 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 11px;
+  left: 8px;
+  font-size: 16px;
+  opacity: 0.72;
+}
+
+.cart-summary {
+  width: 100%;
+  padding: 10px;
+  padding-bottom: 20px;
+  background-color: #f6f6f6;
+  position: sticky;
+  bottom: 0;
+}
+
+.total-items {
+  display: block;
+  color: #15161D;
+  width: 95%;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.total-items span {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.total-price {
+  display: block;
+  color: #000000c0;
+  width: 95%;
+  margin: 10px 0 12px 10px;
+  font-size: 19px;
+}
+
+.total-price span {
+  font-family: monospace;
+  color: #000000;
+  font-weight: 500;
+  font-size: 23px;
+  margin-left: auto;
+  float: right;
+  margin-right: 33px;
+}
+
+.continue-shopping, .checkout {
+  padding: 0 14px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  width: 132px;
+  height: 42px;
+  transition: all .3s ease-in;
+  text-align: center;
+  align-items: center;
+  line-height: 42px;
+  text-decoration: none;
+  border: solid #d10024 1px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.continue-shopping {
+  background-color: white;
+  color: #d10024;
+  margin-right: 5px;
+}
+
+.continue-shopping:hover {
+  background-color: #d10024;
+  color: white;
+}
+
+.checkout {
+  background-color: #d10024;
+  color: #ffffff;
+}
+
+.checkout:hover {
+  background-color: #96001a;
+}
+
+
+
           
           /* DARK OVERLAY */
 
