@@ -495,7 +495,6 @@ span.cheveron-rotated {
   padding: 15px 20px;
   background-color: #ffffff;
   border-radius: 10px;
-  display: none;
 }
 
 .acc-menu .acc-name {
@@ -526,9 +525,7 @@ span.cheveron-rotated {
   font-weight: bold;
 }
 
-.acc-menu .acc-data .input-group input[type="text"],
-.acc-menu .acc-data .input-group input[type="email"],
-.acc-menu .acc-data .input-group input[type="password"] {
+.acc-menu .acc-data .input-group input {
   width: calc(100% - 22px);
   height: 25px;
   padding: 5px 10px;
@@ -536,6 +533,16 @@ span.cheveron-rotated {
   border-radius: 5px;
   font-size: 14px;
 }
+
+.pass-form .input-group input:focus {
+  outline: none;
+  border: 1px solid #444444;
+}
+
+.pers-infos .input-group input:focus {
+  outline: none;
+  border: 1px solid #ccc;
+} 
 
 .acc-menu .acc-data .acc-error {
   margin: 0;
@@ -633,7 +640,8 @@ span.cheveron-rotated {
   border-left: solid #d10024;
   box-shadow: -25px 5px 20px rgba(0, 0, 0, 0.1);
   z-index: 1001;
-  overflow-y: auto;
+  overflow-y: scroll;
+  scrollbar-width: none;
   overflow-x: hidden;
 }
 
@@ -651,10 +659,10 @@ span.cheveron-rotated {
   width: 95%;
   display: flex;
   align-items: center;
-  /* border-bottom: 1px solid #ccc; */
   padding: 10px;
   position: relative;
   padding-top: 5px;
+  padding-left: 15px;
 }
 
 .cart-item-image {
@@ -743,13 +751,13 @@ span.cheveron-rotated {
   background-color: red;
   color: white;
   border: none;
-  padding: .5px 6px;
+  padding: 0px 5px 2px 5px;
   border-radius: 50%;
   cursor: pointer;
   position: absolute;
-  top: 11px;
-  left: 8px;
-  font-size: 16px;
+  top: 6.5px;
+  left: 10px;
+  font-size: 14px;
   opacity: 0.72;
 }
 

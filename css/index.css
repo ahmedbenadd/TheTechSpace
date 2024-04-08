@@ -278,14 +278,15 @@ div.row1, div.row2 {
     border-radius: 3px;
     font-weight: normal;
     transition: ease-out 0.3s;
+    border: 1px solid transparent;
 }
 
 .view-all-button a:hover {
     background-color: #ffffff;
     color: #d10024;
-    box-sizing: border-box;
-    border: 1px solid #d10024;
+    border-color: #d10024;
 }
+
 
 .why-us {
     display: flex;

@@ -38,10 +38,10 @@
                         <li class="dropdown">
                             <a class="a-categories" href="products.php">CATEGORIES</a>
                             <ul>
-                                <li><a href="#">Laptops</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Components</a></li>
-                                <li><a href="#">Accessories</a></li>
+                                <li><a href="products.php?cgr=<?php echo base64_encode('Laptops'); ?>">Laptops</a></li>
+                                <li><a href="products.php?cgr=<?php echo base64_encode('Smartphones'); ?>">Smartphones</a></li>
+                                <li><a href="products.php?cgr=<?php echo base64_encode('Components'); ?>">Components</a></li>
+                                <li><a href="products.php?cgr=<?php echo base64_encode('Accessories'); ?>">Accessories</a></li>
                             </ul>
                         </li>
                         <li><a href="products.php">PRODUCTS</a></li>
@@ -127,10 +127,10 @@
                     <li>
                         <a href="#" class="catg-button">CATEGORIES<span id="cheveron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.002 45.999"><g xmlns="http://www.w3.org/2000/svg" transform="matrix(-1 0 0 -1 26.002 45.999)"><path d="M24.998 40.094a3.484 3.484 0 0 1 0 4.893 3.404 3.404 0 0 1-4.846 0L1.004 25.447a3.486 3.486 0 0 1 0-4.895L20.152 1.014a3.402 3.402 0 0 1 4.846 0 3.484 3.484 0 0 1 0 4.893L9.295 23l15.703 17.094z" fill="#15161D" class="fill-000000"/></g></svg></span> </a>
                         <ul class = "catg">
-                            <li><a href="#"><p>Laptops</p></a></li>
-                            <li><a href="#"><p>Smartphones</p></a></li>
-                            <li><a href="#"><p>Components</p></a></li>
-                            <li><a href="#"><p>Accessories</p></a></li>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Laptops'); ?>"><p>Laptops</p></a></li>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Smartphones'); ?>"><p>Smartphones</p></a></li>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Components'); ?>"><p>Components</p></a></li>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Accessories'); ?>"><p>Accessories</p></a></li>
                         </ul>
                     </li>
                     <li><a href="products.php">PRODUCTS</a></li>
@@ -152,50 +152,53 @@
                     </svg>
                 </span>
             </div>
-            <div class="acc-login-message">
-                <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your account.</p>
-            </div>
-            <div class="content">
-                <h2 class="acc-name first-name"></h2>
-                <div class="additional-options">
-                    <a id="logoutButton" onclick="logout();">Logout</a>
+            <?php if(!isset($_SESSION['id'])) { ?>
+                <div class="acc-login-message">
+                    <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your account.</p>
                 </div>
-                <h4 class="acc-title">Personal Information</h4>
-                <form class="acc-data" action="" autocomplete="off">
-                    <div class="input-group">
-                        <label for="acc_full_name">Full Name</label>
-                        <input type="text" id="acc_full_name" autocomplete="off" readonly> 
+            <?php } else { ?>
+                <div class="content">
+                    <h2 class="acc-name first-name"></h2>
+                    <div class="additional-options">
+                        <a id="logoutButton" onclick="logout();">Logout</a>
                     </div>
-                    <div class="input-group">
-                        <label for="acc_email">Email</label>
-                        <input type="email" id="acc_email" autocomplete="off" readonly>
-                    </div>
-                    <div class="input-group">
-                        <label for="acc_username">Username</label>
-                        <input type="text" id="acc_username" autocomplete="off" readonly>
-                    </div>
-                </form>
-                <h4 class="acc-title">Update Your Password</h4>
-                <p class="pass_success">Password Updated Successfully</p>
-                <form class="acc-data" action="" autocomplete="off">
-                    <div class="input-group">
-                        <label for="acc_current_password">Current Password</label>
-                        <input type="password" id="acc_current_password" autocomplete="off">
-                        <p class="acc-error curr-pass-err"></p>
-                    </div>
-                    <div class="input-group">
-                        <label for="acc_new_password">New Password</label>
-                        <input type="password" id="acc_new_password" autocomplete="off">
-                        <p class="acc-error new-pass-err"></p>
-                    </div>
-                    <div class="input-group">
-                        <label for="acc_confirm_password">Confirm New Password</label>
-                        <input type="password" id="acc_confirm_password" autocomplete="off">
-                        <p class="acc-error comf-pass-err"></p>
-                    </div>
-                    <button class="save" id="savePass">SAVE</button>
-                </form>
-            </div>
+                    <h4 class="acc-title">Personal Information</h4>
+                    <form class="acc-data pers-infos" action="" autocomplete="off">
+                        <div class="input-group">
+                            <label for="acc_full_name">Full Name</label>
+                            <input type="text" id="acc_full_name" autocomplete="off" readonly> 
+                        </div>
+                        <div class="input-group">
+                            <label for="acc_email">Email</label>
+                            <input type="email" id="acc_email" autocomplete="off" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label for="acc_username">Username</label>
+                            <input type="text" id="acc_username" autocomplete="off" readonly>
+                        </div>
+                    </form>
+                    <h4 class="acc-title">Update Your Password</h4>
+                    <p class="pass_success">Password Updated Successfully</p>
+                    <form class="acc-data pass-form" action="" autocomplete="off">
+                        <div class="input-group">
+                            <label for="acc_current_password">Current Password</label>
+                            <input type="password" id="acc_current_password" autocomplete="off">
+                            <p class="acc-error curr-pass-err"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="acc_new_password">New Password</label>
+                            <input type="password" id="acc_new_password" autocomplete="off">
+                            <p class="acc-error new-pass-err"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="acc_confirm_password">Confirm New Password</label>
+                            <input type="password" id="acc_confirm_password" autocomplete="off">
+                            <p class="acc-error comf-pass-err"></p>
+                        </div>
+                        <button class="save" id="savePass">SAVE</button>
+                    </form>
+                </div>
+            <?php } ?>
         </div>
 
         <div class="cart-menu">
@@ -211,9 +214,11 @@
                     </svg>
                 </span>
             </div>
+            <?php if(!isset($_SESSION['id'])) { ?>
             <div class="cart-login-message">
                 <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your cart.</p>
             </div>
+            <?php } else { ?>
             <div class="cart-content">
                 <div class="cart-items-container">
                     <?php
@@ -271,10 +276,12 @@
                     <button class="checkout">Checkout</button>
                 </div>
             </div>
+            <?php } ?>
 
 
 
         </div>
+
 
         <div class="dark-overlay"></div>
     </main>
