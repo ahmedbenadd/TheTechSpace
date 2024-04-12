@@ -2,17 +2,21 @@ document.addEventListener("DOMContentLoaded", function() {
 // __________ SCROLL TO UP BTN __________//
 
 let toUp = document.querySelector(".to-up");
+window.onscroll = function() {
+    if (window.scrollY >= 400) {
+        toUp.classList.add("to-up-show");
+    } else {
+        toUp.classList.remove("to-up-show");
+    }
+};
 
-window.onscroll = function () {
-    this.scrollY >= 400 ? toUp.classList.add("to-up-show") : toUp.classList.remove("to-up-show");
-}
-
-toUp.onclick = function () {
-    window.scrollTo ({
+toUp.onclick = function() {
+    console.log('clicked');
+    window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: "smooth"
     });
-}
+};
 
 // __________ BURGER MENU __________//
 
@@ -151,6 +155,154 @@ cartShow.onclick = function () {
     cartMenu.classList.add('cart-menu-showed');
     darkOverlay.style.display = "block";
 }
+
+function updateCartUI(cartData) {
+    if (cartData.message == 'empty_cart') {
+        document.querySelector('.cart-items-container').innerHTML = cartData.cart;
+        const cartSummary = document.querySelector('.cart-summary');
+        if (cartSummary) {
+            cartSummary.remove();
+        }
+    } else {
+        document.querySelector('.cart-items-container').innerHTML = cartData.cart;
+        let cartSummary = document.querySelector('.cart-summary');
+        if (!cartSummary) {
+            cartSummary = document.createElement('div');
+            cartSummary.classList.add('cart-summary');
+            document.querySelector('.cart-menu').appendChild(cartSummary);
+        }
+        cartSummary.innerHTML = cartData['cart-summary'];
+    }
+    attachRemoveButtonListeners();
+    attachSyncButtonListeners();
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.getAttribute('data-productid');
+        const currentButton = this;
+        let quantityInput = document.querySelector('#cart-quantity');
+        let quantity = quantityInput ? quantityInput.value : 1;
+        let valid = true;
+
+        if (quantity < 1 || quantity > 20) {
+            document.querySelector('.quantity-error').innerHTML = "*Quantity must be between 1 and 20.";
+            valid = false;
+        }
+        
+        if (valid) {
+            $.ajax({
+                url: 'php/add_to_cart.php',
+                type: 'POST',
+                data: { productid: productId, item_quantity: quantity },
+                beforeSend: function () {
+                    currentButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="25px" height="15px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="32" stroke-width="8" stroke="#d10024" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform></circle></svg>';
+                },
+                success: function(data) {
+                    const cartData = JSON.parse(data);
+                    if (cartData.status) {
+                        updateCartUI(cartData);
+                    } else {
+                        console.error('Error:', cartData.message);
+                    }
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                },
+                complete: function () {
+                    cartShow.click();
+                    currentButton.innerHTML = "ADD TO CART";
+                    if(quantityInput) {
+                        document.querySelector('.quantity-error').innerHTML = ""
+                    }
+                }
+            });
+        }
+    });
+});
+
+function attachRemoveButtonListeners() {
+    const removeButtons = document.querySelectorAll('.remove-item-button');
+    if (removeButtons.length > 0) {
+        removeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-productid');
+                const currentButton = this;
+                $.ajax({
+                    url: 'php/remove_from_cart.php',
+                    type: 'POST',
+                    data: { productid: productId},
+                    beforeSend: function () {
+                        currentButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="13px" height="13px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="32" stroke-width="8" stroke="#fff" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform></circle></svg>';
+                    },
+                    success: function(data) {
+                        const cartData = JSON.parse(data);
+                        if (cartData.status) {
+                            updateCartUI(cartData);
+                        } else {
+                            console.error('Error:', cartData.message);
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    },
+                    complete: function () {
+                        cartShow.click();
+                        currentButton.innerHTML = "&#x2715;";
+                    }
+                });
+            });
+        });
+    }
+}
+
+function attachSyncButtonListeners() {
+    const syncButtons = document.querySelectorAll('.sync-qty-button');
+    if (syncButtons.length > 0) {
+        syncButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-productid');
+                const itemQuantityElement = document.querySelector('#qty-'+ productId);
+                const itemQuantity = itemQuantityElement.value;
+                let valid = true;
+                const currentButton = this;
+                if (itemQuantity > 20 || !itemQuantity) {
+                    itemQuantityElement.classList.add('cart-item-quantity-err');
+                    valid = false;
+                }
+                if (valid) {
+                    $.ajax({
+                        url: 'php/update_qty.php',
+                        type: 'POST',
+                        data: { productid: productId, item_quantity: itemQuantity },
+                        beforeSend: function () {
+                            currentButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="13px" height="13px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="32" stroke-width="8" stroke="#fff" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform></circle></svg>';
+                        },
+                        success: function(data) {
+                            const cartData = JSON.parse(data);
+                            if (cartData.status) {
+                                updateCartUI(cartData);
+                            } else {
+                                console.error('Error:', cartData.message);
+                            }
+                        },
+                        error: function(error) {
+                            console.error('Error:', error);
+                        },
+                        complete: function () {
+                            cartShow.click();
+                            currentButton.innerHTML = "&#x2715;";
+                        }
+                    });
+                }
+            });
+        });
+    }
+}
+
+
+attachSyncButtonListeners();
+attachRemoveButtonListeners();
 
 // __________ MENUS __________//
 

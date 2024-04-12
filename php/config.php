@@ -1,5 +1,4 @@
 <?php
-
     $host = "localhost";
     $username = "root";
     $password = "";
@@ -17,5 +16,4 @@
     } catch (Exception $e) {
         $connStatus = 'error';
     }
-
 ?>

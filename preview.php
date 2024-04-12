@@ -80,16 +80,15 @@ if (isset($_GET['ghijzs'])) {
             <div class="preview-container">
                 <div class="in-container">
                     <div class="product-images">
-                        <?php
-                        echo '<div class="main-image"><img id="main-image" src="'.$row['img_1'].'" alt="Main Product Image"></div>';
-                        echo '<div class="thumbnail-images">';
-                        echo '<img class="thumbnail" src="'.$row['img_1'].'" onclick="changeImage(\''.$row['img_1'].'\')" alt="Product Image">';
-                        echo '<img class="thumbnail" src="'.$row['img_2'].'" onclick="changeImage(\''.$row['img_2'].'\')" alt="Product Image">';
-                        echo '<img class="thumbnail" src="'.$row['img_3'].'" onclick="changeImage(\''.$row['img_3'].'\')" alt="Product Image">';
-                        echo '<img class="thumbnail" src="'.$row['img_4'].'" onclick="changeImage(\''.$row['img_4'].'\')" alt="Product Image">';
-                        echo '</div>';
-                        ?>
+                        <div class="main-image"><img id="main-image" src="<?php echo $row['img_1']; ?>" alt="Main Product Image"></div>
+                        <div class="thumbnail-images">
+                            <img class="thumbnail" src="<?php echo $row['img_1']; ?>" data-img="<?php echo $row['img_1']; ?>"  alt="Product Image">
+                            <img class="thumbnail" src="<?php echo $row['img_2']; ?>" data-img="<?php echo $row['img_2']; ?>" alt="Product Image">
+                            <img class="thumbnail" src="<?php echo $row['img_3']; ?>" data-img="<?php echo $row['img_3']; ?>" alt="Product Image">
+                            <img class="thumbnail" src="<?php echo $row['img_4']; ?>" data-img="<?php echo $row['img_4']; ?>" alt="Product Image">
+                        </div>
                     </div>
+
                     <div class="product-details">
                         <h2 class="product-name"><?php echo $row['name']; ?></h2>
                         <p class="product-category">Category: <span><?php echo $row['category']; ?></span></p>
@@ -106,10 +105,11 @@ if (isset($_GET['ghijzs'])) {
                             </span>
                         </div>
                         <p class="description"><?php echo $row['description']; ?></p>
-                        <div class="add-to-cart">
+                        <div class="add-to-cart-container">
                             <label for="quantity">Quantity &nbsp;</label>
-                            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
-                            <button type="button" >ADD TO CART</button>
+                            <input type="number" id="cart-quantity" name="quantity" min="1" max="10" value="1">
+                            <p class="quantity-error"></p>
+                            <button type="button" class="add-to-cart" data-productid="<?php echo $row['id']; ?>">add to cart</button>
                         </div>
 
                     </div>
@@ -117,8 +117,8 @@ if (isset($_GET['ghijzs'])) {
                 <div class="in-container long-description">
                     <ul class="tab-nav">
                         <li class="title">Description</li>
-                        <li>
-                        <?php echo $row['long_description']; ?>
+                        <li class="long-description">
+                            <?php echo $row['long_description']; ?>
                         </li>
                     </ul>
                 </div>
@@ -143,7 +143,7 @@ if (isset($_GET['ghijzs'])) {
                             </a>
                             <div class="price">
                                 <span>$<?php echo $row["price"]; ?></span>
-                                <button type="button" class="price-button">add to cart</button>
+                                <button type="button" class="price-button add-to-cart" data-productid="<?php echo $row['id']; ?>">add to cart</button>
                             </div>
                         </div>
                     <?php
@@ -161,7 +161,9 @@ if (isset($_GET['ghijzs'])) {
                 <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
             </svg>
         </div>
-        
+
+        <div class="dark-overlay"></div>
+
         <div class="burger-menu" id="burger-menu">
             <div class="menu-header">
                 <h1>MENU</h1>
@@ -278,7 +280,7 @@ if (isset($_GET['ghijzs'])) {
                     $query = "SELECT product_id, quantity FROM cart WHERE user_id = '" . $_SESSION["id"] . "'";
                     $result = mysqli_query($conn, $query);
 
-                    if ($result && mysqli_num_rows($result) > 0) {
+                    if ($result && $items_num = mysqli_num_rows($result) > 0) {
                         $total_price = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
                             $product_id = $row["product_id"];
@@ -295,7 +297,7 @@ if (isset($_GET['ghijzs'])) {
                                     <div class="cart-item-details">
                                         <h3 class="cart-item-name"><?php echo $product['name']; ?></h3>
                                         <div class="price-quantity-container">
-                                            <span class="cart-item-price">$<?php echo $product['price']; $total_price += $product['price']; ?></span>
+                                            <span class="cart-item-price">$<?php echo $product['price']; $total_price += $product['price']*$quantity; ?></span>
                                             <div class="quantity-container">
                                                 <label for="qty-<?php echo $product_id; ?>" class="quantity-label">Qty:</label>
                                                 <input type="number" id="qty-<?php echo $product_id; ?>" class="cart-item-quantity" value="<?php echo $quantity; ?>" max="20" min="1">
@@ -304,38 +306,40 @@ if (isset($_GET['ghijzs'])) {
                                                 </button>
                                             </div>
                                         </div>
-                                        <button class="remove-item-button">x</button>
+                                        <button class="remove-item-button" data-productid="<?php echo $row['product_id']; ?>">&#x2715;</button>
                                     </div>
                                 </div>
                     <?php
                             }
                             mysqli_free_result($product_result);
                         }
-                    } else {
-                        echo "<p class='empty-cart-message'>Your cart is empty.</p>";
-                    }
-
                     ?>
                 </div>
                 <div class="cart-summary">
                     <span class="total-items">
                         <?php
-                        echo mysqli_num_rows($result) . ' ' . (mysqli_num_rows($result) === 1 ? '<span>Item</span>' : '<span>Items</span>');
-                        mysqli_free_result($result);
+                            echo mysqli_num_rows($result) . ' ' . (mysqli_num_rows($result) === 1 ? '<span>Item</span>' : '<span>Items</span>');
+                            mysqli_free_result($result);
                         ?>
                     </span>
                     <span class="total-price">Total : <span>$<?php echo $total_price; ?></span></span>
                     <a href="products.php" class="continue-shopping">Browse</a>
                     <button class="checkout">Checkout</button>
                 </div>
+                <?php
+                    } else {
+                    ?>
+                        <div class="empty-cart">
+                            <img src="icons/empty-cart.png" alt="Cart" class="empty-cart-img">
+                            <p class="empty-cart-message">Your cart is empty.</p>
+                        </div>
+                    <?php
+                    }
+                ?>
             </div>
             <?php } ?>
-
-
-
         </div>
 
-        <div class="dark-overlay"></div>
     </main>
     <footer>
         <div class="top-footer">

@@ -1,6 +1,10 @@
-function changeImage(src) {
-    document.getElementById('main-image').src = src;
-}
+document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+    thumbnail.addEventListener('mouseover', function() {
+        var newImg = this.getAttribute('data-img');
+        document.getElementById('main-image').src = newImg;
+    });
+});
+
 
 var images = document.querySelectorAll('.product-card .image img');
 
@@ -16,5 +20,3 @@ images.forEach(function(image) {
         image.src = originalSrc;
     });
 });
-
-document.

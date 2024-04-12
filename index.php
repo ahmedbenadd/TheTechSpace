@@ -63,11 +63,15 @@
         <h2 class="BESTSELLER">BESTSELLER</h2>
         <section class="wrapper">
             <div class="product-img">
-              <img src="images/i9.jpg" height="280" width="290">
+            <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=1'); ?>">
+                <img src="images/i9.jpg" height="280" width="290">
+            </a>
             </div>
             <div class="product-info">
               <div class="product-text">
-                <h1>Intel Core i9 13th Gen</h1>
+              <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=1'); ?>">
+                    <h1>Intel Core i9 13th Gen</h1>
+                </a>
                 <p>
                     Intel Core i9 13900KF (3.0 GHz / 5.8 GHz)<br>
                     <strong>Brand </strong>&nbsp;Intel<br>
@@ -80,7 +84,7 @@
               </div>
               <div class="product-price-btn">
                 <p>566.60$</p>
-                <button type="button">add to cart</button>
+                <button type="button" class="add-to-cart" data-productid="1">add to cart</button>
               </div>
             </div>
         </section>
@@ -88,83 +92,107 @@
             <h2 class="products-h2">LATEST PRODUCTS</h2>
             <div class="row1">
                 <div class="product-card macbook">
-                    <h3>MacBook Pro M3 14"</h3>
+                    <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=2'); ?>">
+                        <h3>MacBook Pro M3 14"</h3>
+                    </a>
                     <div class="info-product">
                         <div class="image">
-                            <img src="images/mcbkpro-m3.jpg" alt="MacBook Pro M3">
+                            <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=2'); ?>">
+                                <img src="images/mcbkpro-m3.jpg" alt="MacBook Pro M3">
+                            </a>
                         </div>
                         <p class="p-product">M3 Pro chip 12‑core CPU 8‑core GPU, 1TB SSD</p>
                     </div>
                     <div class="price">
                         <span>$2,399.00</span>
-                        <button type="button" class="price-button">add to cart</button>
+                        <button type="button" class="add-to-cart price-button" data-productid="2">add to cart</button>
                     </div>
                 </div>
                 <div class="product-card s24ultra">
-                    <h3>SAMSUNG Galaxy S24 Ultra</h3>
+                    <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=3'); ?>">
+                        <h3>SAMSUNG Galaxy S24 Ultra</h3>
+                    </a>
                     <div class="info-product">
                         <div class="image">
-                             <img src="images/galaxys24ultra.svg" alt="S24 Ultra">
+                            <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=3'); ?>">
+                                <img src="images/galaxys24ultra.svg" alt="S24 Ultra">
+                            </a>
                          </div>
                         <p>Snapdragon 8 Gen 3, 12GB, 256GB</p>
                     </div>
                     <div class="price">
                         <span>$1,299.99</span>
-                        <button type="button" class="price-button">add to cart</button>
+                        <button type="button" class="add-to-cart price-button" data-productid="3">add to cart</button>
                     </div>
                 </div>
                 <div class="product-card RTX3070">
-                    <h3>Gigabyte GeForce RTX 4070</h3>
+                    <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=4'); ?>">
+                        <h3>Gigabyte GeForce RTX 4070</h3>
+                    </a>
                     <div class="info-product">
                         <div class="image">
-                            <img src="images/RTX3070.jpg" alt="RTX 4070">
+                            <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=4'); ?>">
+                                <img src="images/RTX3070.jpg" alt="RTX 4070">
+                            </a>
                         </div>
                         <p>NVIDIA GeForce RTX 4070 12GB GDDR6X</p>
                     </div>
                     <div class="price">
                         <span>$699</span>
-                        <button type="button" class="price-button">add to cart</button>
+                        <button type="button" class="add-to-cart price-button" data-productid="4">add to cart</button>
                     </div>
                 </div>
             </div>
             <div class="row2">
                 <div class="product-card LogitechG502">
-                    <h3>Logitech G502 Hero RGB</h3>
+                    <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=5'); ?>">
+                        <h3>Logitech G502 Hero RGB</h3>
+                    </a>
                     <div class="info-product">
-                        <div class="image">
-                            <img src="images/LogitechG502.jpg" alt="Logitech G502">
+                        <div class="image">              
+                            <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=5'); ?>">
+                                <img src="images/LogitechG502.jpg" alt="Logitech G502">
+                            </a>
                         </div>
                         <p>Optical mouse, DPI 25600, RGB, 121g</p>
                     </div>
                     <div class="price">
                         <span>$79.99</span>
-                        <button type="button" class="price-button">add to cart</button>
+                        <button type="button" class="add-to-cart price-button" data-productid="5">add to cart</button>
                     </div>
                 </div>
                 <div class="product-card dell-xps">
-                    <h3>Dell XPS 15 - 9510</h3>
+                    <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=6'); ?>">
+                        <h3>Dell XPS 15 - 9510</h3>
+                    </a>
                     <div class="info-product">
                         <div class="image">
-                            <img src="images/dellxps.jpg" alt="Dell XPS 15">
+                            <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=6'); ?>">
+                                <img src="images/dellxps.jpg" alt="Dell XPS 15">
+                            </a>
                         </div>
                         <p>i7-11800H/16 GB/1TB SSD/RTX3050Ti /15.6" FHD+</p>
                     </div>
                     <div class="price">
                         <span>$1,099</span>
-                        <button type="button" class="price-button">add to cart</button>
+                        <button type="button" class="add-to-cart price-button" data-productid="6">add to cart</button>
                     </div>
                 </div>
                 <div class="product-card razer">
-                    <h3>Razer Blackshark V2 X</h3>
+                    <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=1'); ?>">
+                        <h3>Razer Blackshark V2 X</h3>
+                    </a>
                     <div class="info-product">
                         <div class="image">
-                            <img src="images/razer.jpg" alt="Product 1">
+                            <a class="preview-link" href="preview.php?ghijzs=<?php echo base64_encode('llcctx=1'); ?>">
+                                <img src="images/razer.jpg" alt="Product 1">
+                            </a>
                         </div>
                         <p>Black,Wired - 3.5 mm audio jack, 7.1 Virtual Surround</p>
                     </div>
                     <div class="price">
                         <span>$49.99</span>
-                        <button type="button" class="price-button">add to cart</button>
+                        <button type="button" class="add-to-cart price-button" data-productid="7">add to cart</button>
                     </div>
                 </div>
             </div>
@@ -195,6 +223,8 @@
                 <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
             </svg>
         </div>
+
+        <div class="dark-overlay"></div>
 
         <div class="burger-menu" id="burger-menu">
             <div class="menu-header">
@@ -312,7 +342,7 @@
                     $query = "SELECT product_id, quantity FROM cart WHERE user_id = '" . $_SESSION["id"] . "'";
                     $result = mysqli_query($conn, $query);
 
-                    if ($result && mysqli_num_rows($result) > 0) {
+                    if ($result && $items_num = mysqli_num_rows($result) > 0) {
                         $total_price = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
                             $product_id = $row["product_id"];
@@ -329,47 +359,48 @@
                                     <div class="cart-item-details">
                                         <h3 class="cart-item-name"><?php echo $product['name']; ?></h3>
                                         <div class="price-quantity-container">
-                                            <span class="cart-item-price">$<?php echo $product['price']; $total_price += $product['price']; ?></span>
+                                            <span class="cart-item-price">$<?php echo $product['price']; $total_price += $product['price']*$quantity; ?></span>
                                             <div class="quantity-container">
                                                 <label for="qty-<?php echo $product_id; ?>" class="quantity-label">Qty:</label>
                                                 <input type="number" id="qty-<?php echo $product_id; ?>" class="cart-item-quantity" value="<?php echo $quantity; ?>" max="20" min="1">
-                                                <button class="sync-qty-button">
+                                                <button class="sync-qty-button" data-productid="<?php echo $row['product_id']; ?>">
                                                     <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.3935 5.37371C18.0253 6.70569 19.8979 10.7522 18.5761 14.4118C17.6363 17.0135 15.335 18.7193 12.778 19.0094M12.778 19.0094L13.8253 17.2553M12.778 19.0094L14.4889 20M9.60651 18.6263C5.97465 17.2943 4.10205 13.2478 5.42394 9.58823C6.36371 6.98651 8.66504 5.28075 11.222 4.99059M11.222 4.99059L10.1747 6.74471M11.222 4.99059L9.51114 4" stroke="#464455" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                                                 </button>
                                             </div>
                                         </div>
-                                        <button class="remove-item-button">x</button>
+                                        <button class="remove-item-button" data-productid="<?php echo $row['product_id']; ?>">&#x2715;</button>
                                     </div>
                                 </div>
                     <?php
                             }
                             mysqli_free_result($product_result);
                         }
-                    } else {
-                        echo "<p class='empty-cart-message'>Your cart is empty.</p>";
-                    }
-
                     ?>
                 </div>
                 <div class="cart-summary">
                     <span class="total-items">
                         <?php
-                        echo mysqli_num_rows($result) . ' ' . (mysqli_num_rows($result) === 1 ? '<span>Item</span>' : '<span>Items</span>');
-                        mysqli_free_result($result);
+                            echo mysqli_num_rows($result) . ' ' . (mysqli_num_rows($result) === 1 ? '<span>Item</span>' : '<span>Items</span>');
+                            mysqli_free_result($result);
                         ?>
                     </span>
                     <span class="total-price">Total : <span>$<?php echo $total_price; ?></span></span>
                     <a href="products.php" class="continue-shopping">Browse</a>
                     <button class="checkout">Checkout</button>
                 </div>
+                <?php
+                    } else {
+                    ?>
+                        <div class="empty-cart">
+                            <img src="icons/empty-cart.png" alt="Cart" class="empty-cart-img">
+                            <p class="empty-cart-message">Your cart is empty.</p>
+                        </div>
+                    <?php
+                    }
+                ?>
             </div>
             <?php } ?>
-
-
-
         </div>
-
-        <div class="dark-overlay"></div>
 
     </main>
     <footer>

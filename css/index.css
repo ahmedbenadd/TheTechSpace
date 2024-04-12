@@ -263,6 +263,11 @@ div.row1, div.row2 {
     border: 1px solid #d10024;
 }
 
+.preview-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .view-all-button {
     text-align: center;
     margin: 20px;

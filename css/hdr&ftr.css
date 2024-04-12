@@ -4,12 +4,14 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Tahoma, sans-serif;
-    min-width: 100%;
-    overflow-x: hidden;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma, sans-serif;
+  min-width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  height: 100vh;
+}
   
 ::-webkit-scrollbar {
   width: 5px;
@@ -26,6 +28,13 @@ body {
 }
 
 /* __________ HEADER __________ */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
 
 #top-header {
   background-color: #1e1f29;
@@ -277,7 +286,7 @@ li.cart-li {
   padding: 0 20px;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  /* top: 0; */
   background-color: #ffffff;
   z-index: 10;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -319,7 +328,7 @@ li.cart-li {
   right: -40px;
   cursor: pointer;
   transition: .3s;
-  z-index: 800;
+  z-index: 1000;
 }
 
 .to-up svg {
@@ -633,16 +642,13 @@ span.cheveron-rotated {
   top: 0;
   right: -150%;
   width: 300px;
-  height: 100%;
+  height: 100vh;
   background: #ffffff;
   color: #fff;
   transition: right 0.3s ease;
   border-left: solid #d10024;
   box-shadow: -25px 5px 20px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-  overflow-y: scroll;
-  scrollbar-width: none;
-  overflow-x: hidden;
+  z-index: 2000;
 }
 
 .cart-menu-showed {
@@ -652,7 +658,13 @@ span.cheveron-rotated {
 .cart-content {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+}
+
+.cart-items-container {
+  height: calc(100vh - 194px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .cart-item {
@@ -717,12 +729,21 @@ span.cheveron-rotated {
   color: #464455;
   border: none;
   border-bottom: solid 1px #464455;
-  padding-bottom: 5px;
 }
 
 .cart-item-quantity:focus {
   outline: none;
   border-bottom: solid 1px #000000;
+}
+
+.cart-item-quantity-err {
+  border-bottom: solid 1px red;
+  color: red;
+}
+
+.cart-item-quantity-err:focus {
+  border-bottom: solid 1px red;
+  outline: none;
 }
 
 .sync-qty-button {
@@ -759,7 +780,15 @@ span.cheveron-rotated {
   left: 10px;
   font-size: 14px;
   opacity: 0.72;
+  min-width: 21.5px;
+  min-height: 21.5px;
 }
+
+/* .qty-error {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+} */
 
 .cart-summary {
   width: 100%;
@@ -840,7 +869,17 @@ span.cheveron-rotated {
   background-color: #96001a;
 }
 
+.empty-cart {
+  width: fit-content;
+  margin: 135px auto;
+}
 
+.empty-cart-message {
+  color: #000000;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+}
 
           
           /* DARK OVERLAY */

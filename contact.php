@@ -1,3 +1,7 @@
+<?php
+    include('php/config.php');
+    session_start();    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,6 +113,8 @@
             </svg>
         </div>
         
+        <div class="dark-overlay"></div>
+
         <div class="burger-menu" id="burger-menu">
             <div class="menu-header">
                 <h1>MENU</h1>
@@ -225,7 +231,7 @@
                     $query = "SELECT product_id, quantity FROM cart WHERE user_id = '" . $_SESSION["id"] . "'";
                     $result = mysqli_query($conn, $query);
 
-                    if ($result && mysqli_num_rows($result) > 0) {
+                    if ($result && $items_num = mysqli_num_rows($result) > 0) {
                         $total_price = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
                             $product_id = $row["product_id"];
@@ -242,7 +248,7 @@
                                     <div class="cart-item-details">
                                         <h3 class="cart-item-name"><?php echo $product['name']; ?></h3>
                                         <div class="price-quantity-container">
-                                            <span class="cart-item-price">$<?php echo $product['price']; $total_price += $product['price']; ?></span>
+                                            <span class="cart-item-price">$<?php echo $product['price']; $total_price += $product['price']*$quantity; ?></span>
                                             <div class="quantity-container">
                                                 <label for="qty-<?php echo $product_id; ?>" class="quantity-label">Qty:</label>
                                                 <input type="number" id="qty-<?php echo $product_id; ?>" class="cart-item-quantity" value="<?php echo $quantity; ?>" max="20" min="1">
@@ -251,39 +257,40 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <button class="remove-item-button">x</button>
+                                        <button class="remove-item-button" data-productid="<?php echo $row['product_id']; ?>">&#x2715;</button>
                                     </div>
                                 </div>
                     <?php
                             }
                             mysqli_free_result($product_result);
                         }
-                    } else {
-                        echo "<p class='empty-cart-message'>Your cart is empty.</p>";
-                    }
-
                     ?>
                 </div>
                 <div class="cart-summary">
                     <span class="total-items">
                         <?php
-                        echo mysqli_num_rows($result) . ' ' . (mysqli_num_rows($result) === 1 ? '<span>Item</span>' : '<span>Items</span>');
-                        mysqli_free_result($result);
+                            echo mysqli_num_rows($result) . ' ' . (mysqli_num_rows($result) === 1 ? '<span>Item</span>' : '<span>Items</span>');
+                            mysqli_free_result($result);
                         ?>
                     </span>
                     <span class="total-price">Total : <span>$<?php echo $total_price; ?></span></span>
                     <a href="products.php" class="continue-shopping">Browse</a>
                     <button class="checkout">Checkout</button>
                 </div>
+                <?php
+                    } else {
+                    ?>
+                        <div class="empty-cart">
+                            <img src="icons/empty-cart.png" alt="Cart" class="empty-cart-img">
+                            <p class="empty-cart-message">Your cart is empty.</p>
+                        </div>
+                    <?php
+                    }
+                ?>
             </div>
             <?php } ?>
-
-
-
         </div>
-
-
-        <div class="dark-overlay"></div>
+        
     </main>
     <footer>
         <div class="top-footer">
