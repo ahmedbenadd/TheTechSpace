@@ -65,7 +65,7 @@ if (isset($_SESSION['id']) && isset($_POST['productid'])) {
             $cart_summary_html = '<span class="total-items">' . mysqli_num_rows($cart_result) . ' ' . (mysqli_num_rows($cart_result) === 1 ? '<span>Item</span>' : '<span>Items</span>') . '</span>';
             $cart_summary_html .= '<span class="total-price">Total : <span>$' . $total_price . '</span></span>';
             $cart_summary_html .= '<a href="products.php" class="continue-shopping">Browse</a>';
-            $cart_summary_html .= '<button class="checkout">Checkout</button>';
+            $cart_summary_html .= '<a class="checkout" href="checkout.php">Checkout</a>';
 
             $response['cart-summary'] = $cart_summary_html;
 

@@ -1,6 +1,7 @@
 <?php
     include('php/config.php');
-    session_start();    
+    session_start();  
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -386,7 +387,7 @@
                     </span>
                     <span class="total-price">Total : <span>$<?php echo $total_price; ?></span></span>
                     <a href="products.php" class="continue-shopping">Browse</a>
-                    <button class="checkout">Checkout</button>
+                    <a class="checkout" href="checkout.php">Checkout</a>
                 </div>
                 <?php
                     } else {

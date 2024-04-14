@@ -7,7 +7,8 @@
             $query = "SELECT * FROM users WHERE id = '" . $_SESSION["id"] . "'";
             $result = mysqli_query($conn, $query);
             $row = mysqli_fetch_assoc($result);
-            $_SESSION['user'] = $row;
+            unset($row['password']);
+            $_SESSION = $row;
             $response = array (
                 'login' => true,
                 'full_name' => $row['full_name'],

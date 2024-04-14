@@ -1,15 +1,20 @@
 <?php
+    ob_start();
     include('php/config.php');
-    session_start();    
+    session_start(); 
+    if(!isset($_SESSION['id'])) {
+        header('location: index.php');
+    }   
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Home</title>
     <link rel="stylesheet" href="css/hdr&ftr.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="css/contact.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/checkout.css">
     <link rel="icon" type="icon/png" href="logos/logo-nobg.png">
 </head>
 <body>
@@ -37,83 +42,143 @@
             <a href="index.php" class="logo"><img src="logos/logo1.jpg" alt="The TechSpace logo"></a>
             <nav>
                 <ul>
-                    <span class="to-hide">
-                        <li><a href="index.php">HOME</a></li>
-                        <li class="dropdown">
-                            <a class="a-categories" href="products.php">CATEGORIES</a>
-                            <ul>
-                                <li><a href="products.php?cgr=<?php echo base64_encode('Laptops'); ?>">Laptops</a></li>
-                                <li><a href="products.php?cgr=<?php echo base64_encode('Smartphones'); ?>">Smartphones</a></li>
-                                <li><a href="products.php?cgr=<?php echo base64_encode('Components'); ?>">Components</a></li>
-                                <li><a href="products.php?cgr=<?php echo base64_encode('Accessories'); ?>">Accessories</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="products.php">PRODUCTS</a></li>
-                        <li><a  class="active" href="contact.php">CONTACT</a></li>
+                <span class="to-hide">
+                    <li><a href="index.php">HOME</a></li>
+                    <li class="dropdown">
+                        <a class="a-categories" href="products.php">CATEGORIES</a>
+                        <ul>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Laptops'); ?>">Laptops</a></li>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Smartphones'); ?>">Smartphones</a></li>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Components'); ?>">Components</a></li>
+                            <li><a href="products.php?cgr=<?php echo base64_encode('Accessories'); ?>">Accessories</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.php">PRODUCTS</a></li>
+                    <li><a href="contact.php">CONTACT</a></li>
                     </span>
                     <span class="to-keep">
-                        <li class="cart-li"><a class="cart-a cart-show" ><img class="cart-icon" src="icons/cart.svg" alt="Cart"></a></li>
-                        <li class="cart-li"><a class="cart-a user-a"><img class="user-icon" src="icons/user-solid-2.svg" alt="Account"></a></li>
+                        <li class="cart-li cart-show" ><a class="cart-a " ><img class="cart-icon" src="icons/cart.svg" alt="Cart"></a></li>
+                        <li class="cart-li user-a"><a class="cart-a "><img class="user-icon" src="icons/user-solid-2.svg" alt="Account"></a></li>
                     </span>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-        <section class="contact-form">
-            <h1 class="sectionHeader">Get In Touch!</h1>
-            <div class="contactForm">
-                <form action="" method="">
-                    <div class="alert alert-3-danger">
-                        <h3 class="alert-title" >Email Sent Successfully!</h3>
-                        <p class="alert-content">A confirmation email has been sent to: benaddouahmed2005@gmail.com</p>
-                    </div>
-                    <h1 class="sub-heading">Need Support !</h1>
-                    <input name="f_name" id="full_name" type="text" class="input" placeholder="full name" required>
-                    <span class="er-name error"></span>
-                    <input type="text" id="email" name="email" class="input" placeholder="your email" required>
-                    <span class="er-email error"></span>
-                    <input type="text" id="subject" name="subject" class="input" placeholder="your Subject" required>
-                    <span class="er-subject error"></span>
-                    <textarea class="input" id="message" name="message" cols="30" rows="8" placeholder="Your message..." required></textarea>
-                    <span class="er-message error"></span>
-                    <button type="button" id="send_email" class="input submit" name="submit">Send Message</button>
-                </form>
-                <div class="map-container">
-                    <div class="mapBg"></div>
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.4634760241215!2d-7.657725024198199!3d33.541332473353606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62cdf71a3ad5f%3A0xae343a1ea1f2b204!2sSuperior%20School%20of%20Technology!5e0!3m2!1sen!2sma!4v1710950199971!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="info">
-            <h1>Contact Us</h1>
-            <div class="details">
-                <div class="location-contact">
-                    <div class="icon"><img src="icons/location-white.svg" alt="Location"></div>
-                    <h5>Adress</h5>
-                    <p>Higher School of Technology, Road ElJadida, Casablanca</p>
-                </div>
-                <div class="email-contact">
-                    <div class="icon"><img src="icons/envelope-white.svg" alt="Location"></div>
-                    <h5>Email</h5>
-                    <p>thetechspace@gmail.com<br>thetechspacecontact@gmail.com</p>
-                </div>
-                <div class="phone-contact">
-                    <div class="icon"><img src="icons/phone-white.svg" alt="Location"></div>
-                    <h5>Phone</h5>
-                    <p>+212 581 054 154<br>+212 987 654 321</p>
-                </div>
-            </div>
-        </section>
-        <div class="to-up">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#d10024" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
-            </svg>
-        </div>
         
-        <div class="dark-overlay"></div>
+        <div class="heading"><h2>CHECKOUT</h2></div>
+
+        <section class="page-content">
+            <div class="billing-details">
+                <h3 class="title">PERSONAL INFORMATIONS</h3>
+                <div class="form-group">
+                    <input class="input" type="text" id="full-name" placeholder="First Name" value="<?php echo $_SESSION['full_name'] ?>">
+                    <p class="err-mssg" id="full-name-error"></p>
+                </div>
+                <div class="form-group">
+                    <input class="input" type="email" id="email" placeholder="Email" value="<?php echo $_SESSION['email'] ?>">
+                    <p class="err-mssg" id="email-error"></p>
+                </div>
+                <h3 class="title">DELIVERY</h3>
+                <div class="form-group">
+                    <input class="input" type="text" id="address" placeholder="Address">
+                    <p class="err-mssg" id="address-error"></p>
+                </div>
+                <div class="form-group">
+                    <input class="input" type="text" id="city" placeholder="City">
+                    <p class="err-mssg" id="city-error"></p>
+                </div>
+                <div class="form-group">
+                    <input class="input" type="text" id="country" placeholder="Country" value="Morocco" readonly>
+                </div>
+                <div class="form-group">
+                    <input class="input" type="text" id="zip-code" placeholder="ZIP Code">
+                    <p class="err-mssg" id="zip-code-error"></p>
+                </div>
+                <h3 class="title">PAYMENT</h3>
+                <div class="form-group">
+                    <input class="input" type="text" id="payment" placeholder="Payment" value="Cash On Delivery" readonly>
+                </div>
+            </div>
+            <div class="order-details">
+                <h3 class="title">YOUR ORDER</h3>
+                <div class="order-col">
+                    <div><strong>PRODUCT</strong></div>
+                    <div><strong>TOTAL</strong></div>
+                </div>
+                <div class="order-products">
+                    <?php
+                    $total_price = 0;
+
+                    $query = "SELECT product_id, quantity FROM cart WHERE user_id = '" . $_SESSION["id"] . "'";
+                    $result = mysqli_query($conn, $query);
+
+                    if (!$result || mysqli_num_rows($result) == 0) {
+                        header('location: index.php');
+                        exit();
+                    }
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $product_id = $row["product_id"];
+                        $quantity = $row["quantity"];
+
+                        $product_query = "SELECT name, price, id FROM products WHERE id = '" . $product_id . "'";
+                        $product_result = mysqli_query($conn, $product_query);
+
+                        if ($product_result && mysqli_num_rows($product_result) > 0) {
+                            $product = mysqli_fetch_assoc($product_result);
+                            $product_total = $product['price'] * $quantity;
+                            $total_price += $product_total;
+                ?>
+                            <div class="order-col">
+                                <div><span>x<?php echo $quantity; ?> </span><?php echo $product['name']; ?></div>
+                                <div>$<?php echo $product_total; ?></div>
+                            </div>
+                            <p class="qty-error" id="id-<?php echo $product['id']; ?>"></p>
+                <?php
+                        }
+                        mysqli_free_result($product_result);
+                    }
+                ?>
+                <div class="order-col">
+                    <div>Shipping</div>
+                    <div><strong>FREE</strong></div>
+                </div>
+                <div class="order-col">
+                    <div><strong>SUBTOTAL</strong></div>
+                    <div><strong class="order-total">$<?php echo $total_price; ?></strong></div>
+                </div>
+                <div class="input-checkbox">
+                    <input type="checkbox" id="terms">
+                    <label for="terms" id="checkbox-label">
+                        <span></span>
+                        I accept the terms & conditions
+                    </label>
+				</div>
+                <a href="#" class="buttons cart-edit">EDIT CART</a>
+                <a href="#" class="buttons order-place">PLACE ORDER</a>
+            </div>
+        </section>
+
+        <section class="order-success">
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="110" height="110" viewBox="0 0 48 48">
+                    <path fill="#4caf50" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path><path fill="#ccff90" d="M34.602,14.602L21,28.199l-5.602-5.598l-2.797,2.797L21,33.801l16.398-16.402L34.602,14.602z"></path>
+                </svg>
+            </div>
+            <h1>Order Confirmed !</h1>
+            <p>Your order has been placed successfully.</p>
+            <p>Thank you for trusting us.</p>
+            <a href="index.php">Continue shopping</a>
+        </section>
+
+        <div class="to-up">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#d10024" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                </svg>
+        </div>
+
+        <a href="checkout.php"><div class="dark-overlay"></div></a>
 
         <div class="burger-menu" id="burger-menu">
             <div class="menu-header">
@@ -208,7 +273,7 @@
         </div>
 
         <div class="cart-menu">
-            <div class="menu-header">
+            <a class="menu-header cart-header" href="checkout.php">
                 <h1>CART</h1>
                 <span class="menu-hide">
                     <svg fill="#d10024" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-46.08 -46.08 552.93 552.93" xml:space="preserve" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)" style="margin: auto 0;">
@@ -219,7 +284,7 @@
                         </g>
                     </svg>
                 </span>
-            </div>
+            </a>
             <?php if(!isset($_SESSION['id'])) { ?>
             <div class="cart-login-message">
                 <p>Hi! It appears you're not logged in. Please <a href="login.php">log in</a> to access your cart.</p>
@@ -290,7 +355,6 @@
             </div>
             <?php } ?>
         </div>
-        
     </main>
     <footer>
         <div class="top-footer">
@@ -298,7 +362,7 @@
                 <ul class="footer-links">
                     <li><h5><a href="index.php">HOME</a></h5></li>
                     <li><h5><a href="products.php">PRODUCTS</a></h5></li>
-                    <li><h5><a class="active" href="contact.php">CONTACT</a></h5></li>
+                    <li><h5><a href="contact.php">CONTACT</a></h5></li>
                     <li class="footer-admin"></li>
                     <li class="copyright">© 2024 TheTechSpace. All Rights Reserved.</li>
                 </ul>
@@ -329,7 +393,10 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/send_email.js"></script>
+    <script src="js/checkout.js"></script>
     <script src="js/logout.js"></script>
 </body>
 </html>
+<?php
+    ob_end_flush();
+?>

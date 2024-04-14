@@ -687,6 +687,7 @@ span.cheveron-rotated {
   display: flex;
   align-items: center;
   padding-right: 5px;
+  width: 205px;
 }
 
 .cart-item-name {
@@ -697,6 +698,8 @@ span.cheveron-rotated {
   text-align: left;
   margin-right: auto;
   width: 50%;
+  min-width: 50%;
+  max-width: 50%;
 }
 
 .price-container {
@@ -708,6 +711,8 @@ span.cheveron-rotated {
   flex-direction: column;
   align-items: flex-end;
   width: 50%;
+  min-width: 50%;
+  max-width: 50%;
   margin: auto;
 }
 
@@ -833,7 +838,6 @@ span.cheveron-rotated {
 }
 
 .continue-shopping, .checkout {
-  padding: 0 14px;
   cursor: pointer;
   display: inline-block;
   font-size: 15px;
@@ -842,7 +846,7 @@ span.cheveron-rotated {
   transition: all .3s ease-in;
   text-align: center;
   align-items: center;
-  line-height: 42px;
+  line-height: 40px;
   text-decoration: none;
   border: solid #d10024 1px;
   border-radius: 2px;
@@ -853,6 +857,8 @@ span.cheveron-rotated {
   background-color: white;
   color: #d10024;
   margin-right: 5px;
+  float: left;
+  left: 0;
 }
 
 .continue-shopping:hover {
@@ -863,6 +869,9 @@ span.cheveron-rotated {
 .checkout {
   background-color: #d10024;
   color: #ffffff;
+  float: right;
+  right: 0;
+  margin-right: 26px;
 }
 
 .checkout:hover {
