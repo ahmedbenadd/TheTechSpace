@@ -11,13 +11,38 @@
 .title {
     height: fit-content;
     width: 100%;
-    padding: 21px 30px;
+    padding: 10px 30px;
     box-sizing: border-box;
+    display: flex;
 }
 
 .title h3 {
+    flex: 1;
     margin: 0;
+    display: flex;
+    align-items: center;
 }
+
+.title .add-btn {
+    width: 80px;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color: #006400;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: normal;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.title .add-btn:hover {
+    background-color: rgb(0, 73, 2);
+}
+
+
 
 #table {
     width: 100%;
@@ -47,6 +72,7 @@
 
 #table th, #table td {
     padding: 12px 24px;
+    max-height: 50px;
 }
 
 #table thead th {
@@ -97,6 +123,7 @@
 .trash:hover, .edit:hover {
     transform: scale(1.15);
 }
+
 
 #myModal {
     display: none;

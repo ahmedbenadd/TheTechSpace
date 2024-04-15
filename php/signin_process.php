@@ -35,7 +35,6 @@
                     );
                 }
             } else {
-                echo "wrog user";
                 $response = array(
                     'status' => 'signin_error',
                     'message' => 'Login went wrong',
